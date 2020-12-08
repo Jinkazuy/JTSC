@@ -8,7 +8,9 @@
 </template>
 
 <script>
-	import axios from 'axios'
+	
+	
+	import {http_getPhone} from '@/api/testDir/http_get_test.js'
 	export default {
 		data() {
 			return {
@@ -17,31 +19,32 @@
 		},
 		async onLoad() {
 			console.log('page:index - onLoad - 挂载页面')
+			// 使用axios发送请求
+			// 使用 uniapp自带的 uni.request 发送请求
 			this.axiosTest()
 			this.uniRequestTest()
 		},
 		methods: {
 			async axiosTest() {
-				// let res = await axios.get('https://locally.uieee.com/slides')
-				// console.log(res)
-				
+				let res = await http_getPhone()
+				console.log(res)
 			},
 			async uniRequestTest(){
-				let res = await uni.request({
-				    url: 'https://locally.uieee.com/slides', //仅为示例，并非真实接口地址。
-				    data: {
-				        text: 'uni.request'
-				    },
-				    header: {
-				        'custom-header': 'hello' ,//自定义请求头信息
-						'token': uni.getStorageSync('store_UserInfoData') || '123'
-				    },
-					// success: (res) => {
-					//     console.log(res.data);
-					//     this.text = 'request success';
-					// }
-				})
-				console.log(res)
+				// let res = await uni.request({
+				//     url: 'https://locally.uieee.com/slides', //仅为示例，并非真实接口地址。
+				//     data: {
+				//         text: 'uni.request'
+				//     },
+				//     header: {
+				//         'custom-header': 'hello' ,//自定义请求头信息
+				// 		'token': uni.getStorageSync('store_UserInfoData') || '123'
+				//     },
+				// 	// success: (res) => {
+				// 	//     console.log(res.data);
+				// 	//     this.text = 'request success';
+				// 	// }
+				// })
+				// console.log(res)
 			}
 		}
 	}
