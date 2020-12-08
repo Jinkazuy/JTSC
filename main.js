@@ -5,6 +5,8 @@ Vue.config.productionTip = false
 
 App.mpType = 'app'
 
+require('promise.prototype.finally').shim()
+
 const app = new Vue({
     ...App
 })

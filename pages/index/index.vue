@@ -8,17 +8,41 @@
 </template>
 
 <script>
+	import axios from 'axios'
 	export default {
 		data() {
 			return {
 				title: 'Hellooooooooo-----'
 			}
 		},
-		onLoad() {
+		async onLoad() {
 			console.log('page:index - onLoad - 挂载页面')
+			this.axiosTest()
+			this.uniRequestTest()
 		},
 		methods: {
-
+			async axiosTest() {
+				// let res = await axios.get('https://locally.uieee.com/slides')
+				// console.log(res)
+				
+			},
+			async uniRequestTest(){
+				let res = await uni.request({
+				    url: 'https://locally.uieee.com/slides', //仅为示例，并非真实接口地址。
+				    data: {
+				        text: 'uni.request'
+				    },
+				    header: {
+				        'custom-header': 'hello' ,//自定义请求头信息
+						'token': uni.getStorageSync('store_UserInfoData') || '123'
+				    },
+					// success: (res) => {
+					//     console.log(res.data);
+					//     this.text = 'request success';
+					// }
+				})
+				console.log(res)
+			}
 		}
 	}
 </script>

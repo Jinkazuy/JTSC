@@ -14,6 +14,8 @@ _vue.default.config.productionTip = false;
 
 _App.default.mpType = 'app';
 
+__webpack_require__(/*! promise.prototype.finally */ 20).shim();
+
 var app = new _vue.default(_objectSpread({},
 _App.default));
 
