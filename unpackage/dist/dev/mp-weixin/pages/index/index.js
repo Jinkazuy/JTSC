@@ -152,7 +152,7 @@ var _default =
 
   },
   onLoad: function onLoad() {
-
+    console.log('page:index - onLoad - 挂载页面');
   },
   methods: {} };exports.default = _default;
 

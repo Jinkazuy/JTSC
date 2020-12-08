@@ -15,7 +15,7 @@
 			}
 		},
 		onLoad() {
-
+			console.log('page:index - onLoad - 挂载页面')
 		},
 		methods: {
 
