@@ -1,6 +1,7 @@
 <template>
-	<div class="page-home">
-		page-home
+	<div class="page-goods">
+		page-goods
+		page-goods
 	</div>
 </template>
 
@@ -8,21 +9,21 @@
 	export default {
 		// 挂载
 		onLaunch: function() {
-			console.log('首页 Launch')
+			console.log('商品 Launch')
 		},
 		// 显示
 		onShow: function() {
-			console.log('首页 Show')
+			console.log('商品 Show')
 		},
 		// 隐藏
 		onHide: function() {
-			console.log('首页 Hide')
+			console.log('商品 Hide')
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
-	.page-home {
+	.page-goods {
 		background-color pink;
 	}
 </style>

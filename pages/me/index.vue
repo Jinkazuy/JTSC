@@ -1,6 +1,6 @@
 <template>
-	<div class="page-home">
-		page-home
+	<div class="page-me">
+		page-me
 	</div>
 </template>
 
@@ -8,21 +8,21 @@
 	export default {
 		// 挂载
 		onLaunch: function() {
-			console.log('首页 Launch')
+			console.log('我的 Launch')
 		},
 		// 显示
 		onShow: function() {
-			console.log('首页 Show')
+			console.log('我的 Show')
 		},
 		// 隐藏
 		onHide: function() {
-			console.log('首页 Hide')
+			console.log('我的 Hide')
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
-	.page-home {
+	.page-me {
 		background-color pink;
 	}
 </style>

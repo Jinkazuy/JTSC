@@ -7,16 +7,44 @@
 			}
 		},
 		{
-			"path": "pages/index/index",
+			"path": "pages/goods/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "商品"
+			}
+		},
+		{
+			"path": "pages/me/index",
+			"style": {
+				"navigationBarTitleText": "我的"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "交小哇",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#222222",
+		"selectedColor": "#EB5946",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/home/index",
+			"iconPath": "static/images/icons/tabbar/icon-home-default.png",
+			"selectedIconPath": "static/images/icons/tabbar/icon-home-active.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/goods/index",
+			"iconPath": "static/images/icons/tabbar/icon-goods-default.png",
+			"selectedIconPath": "static/images/icons/tabbar/icon-goods-active.png",
+			"text": "商品"
+		}, {
+			"pagePath": "pages/me/index",
+			"iconPath": "static/images/icons/tabbar/icon-me-default.png",
+			"selectedIconPath": "static/images/icons/tabbar/icon-me-active.png",
+			"text": "我的"
+		}]
 	}
 }

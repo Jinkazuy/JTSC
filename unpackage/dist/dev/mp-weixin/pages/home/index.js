@@ -137,7 +137,19 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 var _default =
-{};exports.default = _default;
+{
+  // 挂载
+  onLaunch: function onLaunch() {
+    console.log('首页 Launch');
+  },
+  // 显示
+  onShow: function onShow() {
+    console.log('首页 Show');
+  },
+  // 隐藏
+  onHide: function onHide() {
+    console.log('首页 Hide');
+  } };exports.default = _default;
 
 /***/ }),
 
