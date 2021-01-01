@@ -1,1 +1,1 @@
-<view class="content"><view class="_div"><rich-text nodes="{{xml}}"></rich-text></view></view>
+<view class="page-index">page-index</view>
