@@ -3,7 +3,14 @@
 		{
 			"path": "pages/home/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				// 下方是使用有赞团队的移动UI框架的button样式
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					"van-button": "/wxcomponents/weapp/dist/button/index"
+				}
 			}
 		},
 		{

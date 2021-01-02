@@ -1,1 +1,1 @@
-<view class="page-home _div data-v-71e217db">page-home</view>
+<view class="page-home _div data-v-71e217db">page-home<van-button vue-id="6b3d36ea-1" type="default" data-com-type="wx" class="data-v-71e217db" bind:__l="__l" vue-slots="{{['default']}}">默认按钮</van-button><van-button vue-id="6b3d36ea-2" round="{{true}}" type="info" data-com-type="wx" class="data-v-71e217db" bind:__l="__l" vue-slots="{{['default']}}">圆形按钮</van-button></view>

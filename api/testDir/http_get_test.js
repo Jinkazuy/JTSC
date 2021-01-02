@@ -2,7 +2,7 @@
 // 由于不是vue组件,所以不能拿到this的vue实例,
 // 所以这里操作store就用原始的方法,直接操作文件;
 
-import http from '@/api/http.js'
+import http from '@/api/common/http.js'
 
 import { url_test } from '@/api/common/http_req_list.js'
 

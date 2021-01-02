@@ -130,21 +130,26 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+var _http_get_test = __webpack_require__(/*! @/api/testDir/http_get_test.js */ 80); //
 //
 //
 //
 //
 //
-var _default =
-{
-  // 挂载
-  onLaunch: function onLaunch() {
-    console.log('首页 Launch');
-  },
-  // 显示
-  onShow: function onShow() {
-    console.log('首页 Show');
+//
+//
+var _default = { // 挂载
+  onLaunch: function onLaunch() {console.log('首页 Launch');}, // 显示
+  onShow: function onShow() {console.log(this.$store.getters.store_UserInfo);(0, _http_get_test.http_getPhone)();console.log('首页 Show');
   },
   // 隐藏
   onHide: function onHide() {
