@@ -1,4 +1,13 @@
 {
   "navigationBarTitleText": "商品",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-button": "/wxcomponents/weapp/dist/button/index",
+    "van-search": "/wxcomponents/weapp/dist/search/index",
+    "van-row": "/wxcomponents/weapp/dist/row/index",
+    "van-col": "/wxcomponents/weapp/dist/col/index",
+    "van-sticky": "/wxcomponents/weapp/dist/sticky/index",
+    "van-tab": "/wxcomponents/weapp/dist/tab/index",
+    "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+    "goods-list": "/components/goodsList/index"
+  }
 }

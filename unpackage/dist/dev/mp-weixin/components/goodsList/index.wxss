@@ -1,0 +1,121 @@
+.goods-list-wrapper.data-v-e6a01fa8 {
+  width: 100%;
+  color: #222;
+}
+.goods-list-wrapper .goods-list__item-wrapper.data-v-e6a01fa8 {
+  float: left;
+  width: 49%;
+  height: 606rpx;
+  background-color: #fff;
+  border-radius: 24rpx;
+  margin-bottom: 20rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-img-box.data-v-e6a01fa8 {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  border: 6rpx solid #ec5c5e;
+  border-radius: 24rpx 24rpx 0 0;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-img-box image.data-v-e6a01fa8 {
+  width: 100%;
+  height: 100%;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-img-box .img-banner-box.data-v-e6a01fa8 {
+  position: absolute;
+  height: 80rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-img-box .img-banner-box .img-banner-box__transverse.data-v-e6a01fa8 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 40rpx;
+  width: 200rpx;
+  background-color: #ec5c5e;
+  font-size: 20rpx;
+  color: #fff;
+  font-weight: 700;
+  line-height: 40rpx;
+  padding-top: 6rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-img-box .img-banner-box .img-banner-box__portrait.data-v-e6a01fa8 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 140rpx;
+  background-color: #ec5c5e;
+  box-shadow: 0 15px 20px 0 rgba(0,0,0,0.4);
+  border-radius: 60rpx 0 0 0;
+  color: #fff;
+  font-weight: 700;
+  padding-top: 12rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-img-box .img-banner-box .img-banner-box__portrait .promotion_v.data-v-e6a01fa8 {
+  text-align: center;
+  font-size: 14rpx;
+  padding-left: 20rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-img-box .img-banner-box .img-banner-box__portrait .promotion_v_price.data-v-e6a01fa8 {
+  text-align: center;
+  font-size: 32rpx;
+  padding-left: 8rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box.data-v-e6a01fa8 {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  padding: 20rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box .goods-list__item-wrapper-info-box__goods-name.data-v-e6a01fa8 {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.4;
+  margin-bottom: 10rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box .goods-list__item-wrapper-info-box__goods-desc.data-v-e6a01fa8 {
+  font-size: 24rpx;
+  color: #222;
+  margin-bottom: 10rpx;
+  line-height: 1.4;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box .goods-list__item-wrapper-info-box__goods-desc .goods-list__item-wrapper-info-box__goods-desc__tags.data-v-e6a01fa8 {
+  color: #e25e59;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box .goods-list__item-wrapper-info-box__goods-tags.data-v-e6a01fa8 {
+  background-color: #fdf7ad;
+  font-size: 24rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box .goods-list__item-wrapper-info-box__active-bar.data-v-e6a01fa8 {
+  position: absolute;
+  bottom: 28rpx;
+  right: 20rpx;
+  left: 20rpx;
+  background-color: #fff;
+  padding-top: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box .goods-list__item-wrapper-info-box__active-bar .goods-list__item-wrapper-info-box__goods-price.data-v-e6a01fa8 {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #eb5946;
+}
+.goods-list-wrapper .goods-list__item-wrapper .goods-list__item-wrapper-info-box .goods-list__item-wrapper-info-box__active-bar .goods-list__item-wrapper-info-box__add-car.data-v-e6a01fa8 {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 8rpx;
+}
+.goods-list-wrapper .goods-list__item-wrapper.data-v-e6a01fa8:nth-child(odd) {
+  margin-right: 2%;
+}
+

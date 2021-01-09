@@ -1,6 +1,10 @@
 {
   "navigationBarTitleText": "首页",
+  "backgroundColor": "#ccc",
   "usingComponents": {
-    "van-button": "/wxcomponents/weapp/dist/button/index"
+    "van-tab": "/wxcomponents/weapp/dist/tab/index",
+    "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+    "van-sticky": "/wxcomponents/weapp/dist/sticky/index",
+    "news-list": "/components/newsList/index"
   }
 }
