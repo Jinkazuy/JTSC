@@ -23,3 +23,14 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 }
+
+.clearfix:before,.clearfix:after { 
+  content:"";
+  display:table;  /* 这句话可以出发BFC BFC可以清除浮动,BFC我们后面讲 */
+}
+.clearfix:after {
+ clear:both;
+}
+.clearfix {
+  /* *zoom:1; */
+}

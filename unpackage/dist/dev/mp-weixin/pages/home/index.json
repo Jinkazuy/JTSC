@@ -2,9 +2,15 @@
   "navigationBarTitleText": "首页",
   "backgroundColor": "#ccc",
   "usingComponents": {
+    "van-loading": "/wxcomponents/weapp/dist/loading/index",
+    "van-search": "/wxcomponents/weapp/dist/search/index",
     "van-tab": "/wxcomponents/weapp/dist/tab/index",
     "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
     "van-sticky": "/wxcomponents/weapp/dist/sticky/index",
-    "news-list": "/components/newsList/index"
+    "van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index",
+    "van-popup": "/wxcomponents/weapp/dist/popup/index",
+    "van-button": "/wxcomponents/weapp/dist/button/index",
+    "news-list": "/components/newsList/index",
+    "font-awesome": "/components/Am-FontAwesome/index"
   }
 }

@@ -5,30 +5,41 @@
 			"style": {
 				"navigationBarTitleText": "首页",
 				"backgroundColor": "#ccc",
-				// 下方是使用有赞团队的移动UI框架的button样式
 				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
 				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
 				// 别忘了最前边的斜杠 / wxcomponents
 				"usingComponents": {
+					// loading
+					"van-loading": "/wxcomponents/weapp/dist/loading/index",
+					// 搜索框
+					"van-search": "/wxcomponents/weapp/dist/search/index",
 					// "van-button": "/wxcomponents/weapp/dist/button/index",
 					// tab-layout
 					"van-tab": "/wxcomponents/weapp/dist/tab/index",
 					"van-tabs": "/wxcomponents/weapp/dist/tabs/index",
 					// 粘性布局
-					"van-sticky": "/wxcomponents/weapp/dist/sticky/index"
+					"van-sticky": "/wxcomponents/weapp/dist/sticky/index",
+					// 上滑浮层
+					"van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index",
+					// 抽屉页
+					"van-popup": "/wxcomponents/weapp/dist/popup/index",
+					// 按钮
+					"van-button": "/wxcomponents/weapp/dist/button/index"
 				}
 			}
 		},
+		// 商品首页
 		{
 			"path": "pages/goods/index",
 			"style": {
 				"navigationBarTitleText": "商品",
-				// 下方是使用有赞团队的移动UI框架的button样式
 				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
 				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
 				// 别忘了最前边的斜杠 / wxcomponents
 				"usingComponents": {
+					// 按钮
 					"van-button": "/wxcomponents/weapp/dist/button/index",
+					// 搜索框
 					"van-search": "/wxcomponents/weapp/dist/search/index",
 					// 弹性布局
 					"van-row": "/wxcomponents/weapp/dist/row/index",
@@ -37,14 +48,104 @@
 					"van-sticky": "/wxcomponents/weapp/dist/sticky/index",
 					// tab-layout
 					"van-tab": "/wxcomponents/weapp/dist/tab/index",
-					"van-tabs": "/wxcomponents/weapp/dist/tabs/index"
+					"van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+					// 抽屉页
+					"van-popup": "/wxcomponents/weapp/dist/popup/index"
 				}
 			}
 		},
+		// 商品专题列表
+		{
+			"path": "pages/goodsSpecial/index",
+			"style": {
+				"navigationBarTitleText": "专题列表",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 按钮
+					// "van-button": "/wxcomponents/weapp/dist/button/index"
+				}
+			}
+		},
+		// 商品详情页
+		{
+			"path": "pages/goodsInfo/index",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 按钮
+					"van-button": "/wxcomponents/weapp/dist/button/index",
+					// tab-layout
+					"van-tab": "/wxcomponents/weapp/dist/tab/index",
+					"van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+					// 浮层
+					"van-toast": "/wxcomponents/weapp/dist/toast/index",
+					// 弹窗
+					"van-popup": "/wxcomponents/weapp/dist/popup/index",
+					// 上滑菜单
+					 "van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index"
+				}
+			}
+		},
+		// 我的首页
 		{
 			"path": "pages/me/index",
 			"style": {
 				"navigationBarTitleText": "我的"
+			}
+		},
+		// 地址选择页
+		{
+			"path": "pages/localSelect/index",
+			"style": {
+				"navigationBarTitleText": "选择地址",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					"van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					"van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+				}
+			}
+		},
+		// 招中标详情页
+		{
+			"path": "pages/newsDetail/index",
+			"style": {
+				"navigationBarTitleText": "详情",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					"van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					// 浮层
+					"van-toast": "/wxcomponents/weapp/dist/toast/index",
+					// 分享
+					"van-share-sheet": "/wxcomponents/weapp/dist/share-sheet/index",
+					// 弹出层
+					"van-popup": "/wxcomponents/weapp/dist/popup/index"
+				}
+			}
+		},
+		// 关于我们
+		{
+			"path": "pages/aboutUs/index",
+			"style": {
+				"navigationBarTitleText": "关于我们",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					// "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					// "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+				}
 			}
 		}
 	],

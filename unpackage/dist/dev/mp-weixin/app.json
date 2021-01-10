@@ -2,7 +2,12 @@
   "pages": [
     "pages/home/index",
     "pages/goods/index",
-    "pages/me/index"
+    "pages/goodsSpecial/index",
+    "pages/goodsInfo/index",
+    "pages/me/index",
+    "pages/localSelect/index",
+    "pages/newsDetail/index",
+    "pages/aboutUs/index"
   ],
   "subPackages": [],
   "window": {

@@ -1,0 +1,104 @@
+// 省列表
+export default [{
+	'cityCode': '11',
+	'cityName': '北京'
+}, {
+	'cityCode': '12',
+	'cityName': '天津'
+}, {
+	'cityCode': '13',
+	'cityName': '河北省'
+}, {
+	'cityCode': '14',
+	'cityName': '山西省'
+}, {
+	'cityCode': '15',
+	'cityName': '内蒙古自治区'
+}, {
+	'cityCode': '21',
+	'cityName': '辽宁省'
+}, {
+	'cityCode': '22',
+	'cityName': '吉林省'
+}, {
+	'cityCode': '23',
+	'cityName': '黑龙江省'
+}, {
+	'cityCode': '31',
+	'cityName': '上海市'
+}, {
+	'cityCode': '32',
+	'cityName': '江苏省'
+}, {
+	'cityCode': '33',
+	'cityName': '浙江省'
+}, {
+	'cityCode': '34',
+	'cityName': '安徽省'
+}, {
+	'cityCode': '35',
+	'cityName': '福建省'
+}, {
+	'cityCode': '36',
+	'cityName': '江西省'
+}, {
+	'cityCode': '37',
+	'cityName': '山东省'
+}, {
+	'cityCode': '41',
+	'cityName': '河南省'
+}, {
+	'cityCode': '42',
+	'cityName': '湖北省'
+}, {
+	'cityCode': '43',
+	'cityName': '湖南省'
+}, {
+	'cityCode': '44',
+	'cityName': '广东省'
+}, {
+	'cityCode': '45',
+	'cityName': '广西壮族自治区'
+}, {
+	'cityCode': '46',
+	'cityName': '海南省'
+}, {
+	'cityCode': '50',
+	'cityName': '重庆市'
+}, {
+	'cityCode': '51',
+	'cityName': '四川省'
+}, {
+	'cityCode': '52',
+	'cityName': '贵州省'
+}, {
+	'cityCode': '53',
+	'cityName': '云南省'
+}, {
+	'cityCode': '54',
+	'cityName': '西藏自治区'
+}, {
+	'cityCode': '61',
+	'cityName': '陕西省'
+}, {
+	'cityCode': '62',
+	'cityName': '甘肃省'
+}, {
+	'cityCode': '63',
+	'cityName': '青海省'
+}, {
+	'cityCode': '64',
+	'cityName': '宁夏回族自治区'
+}, {
+	'cityCode': '65',
+	'cityName': '新疆维吾尔自治区'
+}, {
+	'cityCode': '71',
+	'cityName': '台湾省'
+}, {
+	'cityCode': '81',
+	'cityName': '香港特别行政区'
+}, {
+	'cityCode': '82',
+	'cityName': '澳门特别行政区'
+}]

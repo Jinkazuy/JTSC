@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "详情",
+  "usingComponents": {
+    "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+    "van-toast": "/wxcomponents/weapp/dist/toast/index",
+    "van-share-sheet": "/wxcomponents/weapp/dist/share-sheet/index",
+    "van-popup": "/wxcomponents/weapp/dist/popup/index",
+    "font-awesome": "/components/Am-FontAwesome/index"
+  }
+}

@@ -2,9 +2,9 @@
 	<div class="page-goods">
 		<!-- 搜索栏-->
 		<div class="page-goods_search-bar">
-			<van-search :value="searchValue" placeholder="请输入搜索关键词" class="search-bar__search-input" shape="round" />
+			<van-search @search="_onSearch" :value="searchValue" placeholder="请输入搜索关键词" class="search-bar__search-input" shape="round" />
 			<div class="search-bar__filter-btn">
-				<van-button icon="filter-o" round type="default">
+				<van-button icon="filter-o" round type="default" @click="filterBar_more_driveShow=true">
 					筛选
 				</van-button>
 			</div>
@@ -15,7 +15,7 @@
 				<view class="page-section swiper">
 					<view class="page-section-spacing">
 						<swiper class="swiper" :indicator-dots="true" circular :autoplay="true" :interval="2000" :duration="500">
-							<swiper-item v-for="(item, index) in bannerImgList" :key="index" class="swiper-item-wrapper borderbox">
+							<swiper-item v-for="(item, index) in bannerImgList" :key="index" class="swiper-item-wrapper borderbox" @click="_openPage(item)">
 								<view class="swiper-item uni-bg-red">
 									<img :src="item.src">
 								</view>
@@ -26,13 +26,13 @@
 			</view>
 		</div>
 		<!-- ugc -->
-		<div class="ugc-wrapper borderbox">
+		<div class="ugc-wrapper borderbox" @click="_openAboutUs">
 			<img :src="img_ugc">
 		</div>
 		<!-- 金刚去 -->
 		<div class="pjkk-wrapper borderbox">
-			<div class="pjkk__item" v-for="(item, index) in img_pjkkList" :key="index">
-				<img :src="item">
+			<div class="pjkk__item" v-for="(item, index) in img_pjkkList" :key="index" @click="_openGoodsSpecial(item.itemCode)">
+				<img :src="item.imgSrc">
 				<span class="pjkk__desc">产品名称</span>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 			<div class="porcelain-wrapper__body">
 				<van-row gutter="10">
 					<van-col span="16" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;" @click="_openGoodsSpecial('1-1')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #77929C">
 									xxxxxxxxxxxxxx专区
@@ -57,7 +57,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #F6F6F6;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #F6F6F6;" @click="_openGoodsSpecial('1-2')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #222222">
 									xxxxxxxxxxxxxx专区
@@ -75,7 +75,7 @@
 				<div class="row-space"></div>
 				<van-row gutter="10">
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #FFCA99;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #FFCA99;" @click="_openGoodsSpecial('2-1')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #D27E30">
 									xxxxxxxxxxxxxx专区
@@ -90,7 +90,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #B0DAC8;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #B0DAC8;" @click="_openGoodsSpecial('2-2')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #5B917B">
 									xxxxxxxxxxxxxx专区
@@ -105,7 +105,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;" @click="_openGoodsSpecial('2-3')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #77929C">
 									xxxxxxxxxxxxxx专区
@@ -123,7 +123,7 @@
 				<div class="row-space"></div>
 				<van-row gutter="10">
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #D0DAF0;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #D0DAF0;" @click="_openGoodsSpecial('3-1')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #6C81A5">
 									xxxxxxxxxxxxxx专区
@@ -138,7 +138,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8DEBB;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8DEBB;" @click="_openGoodsSpecial('3-2')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #D1A370">
 									xxxxxxxxxxxxxx专区
@@ -153,7 +153,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #EBD3BB;">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #EBD3BB;" @click="_openGoodsSpecial('3-3')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #A77E61">
 									xxxxxxxxxxxxxx专区
@@ -214,6 +214,9 @@
 			<div class="goods-list__list-wrapper"></div>
 		</div>
 
+		<!-- 抽屉页 - 更多筛选 -->
+		<van-popup :show="filterBar_more_driveShow" @close="filterBar_more_driveShow = false" position="right" custom-style="height: 100%; width: 60%;">内容</van-popup>
+
 	</div>
 </template>
 
@@ -259,22 +262,41 @@
 				// banner列表
 				bannerImgList: [{
 						src: img_testBanner,
+						path: 'aboutUs'
 					},
 					{
 						src: img_testBanner,
+						path: 'aboutUs'
 					},
 					{
 						src: img_testBanner,
+						path: 'aboutUs'
 					},
 				],
+				// 筛选更多抽屉是否显示
+				filterBar_more_driveShow: false,
 				// ugc图片
 				img_ugc,
-				img_pjkkList: [
-					pjkk_1,
-					pjkk_2,
-					pjkk_3,
-					pjkk_4,
-					pjkk_5,
+				img_pjkkList: [{
+						imgSrc: pjkk_1,
+						itemCode: '1'
+					},
+					{
+						imgSrc: pjkk_2,
+						itemCode: '2'
+					},
+					{
+						imgSrc: pjkk_3,
+						itemCode: '3'
+					},
+					{
+						imgSrc: pjkk_4,
+						itemCode: '4'
+					},
+					{
+						imgSrc: pjkk_5,
+						itemCode: '5'
+					},
 				],
 				porcelain_1,
 				porcelain_2,
@@ -356,6 +378,35 @@
 				]
 
 			}
+		},
+		methods: {
+			// 点击金刚区、瓷片区，打开商品专题列表
+			_openGoodsSpecial(item) {
+				console.log(item)
+				uni.navigateTo({
+					url: `/pages/goodsSpecial/index?type=${item}`
+				})
+			},
+			// 搜索确定
+			_onSearch(e) {
+				console.log(e.detail)
+				uni.navigateTo({
+					url: `/pages/goodsSpecial/index?keyWord=${e.detail}`
+				})
+			},
+			// 打开关于我们
+			_openAboutUs() {
+				uni.navigateTo({
+					url: `/pages/aboutUs/index`
+				})
+			},
+			// 点击banner跳转页面
+			_openPage(item) {
+				console.log(item)
+				uni.navigateTo({
+					url: `/pages/${item.path}/index`
+				})
+			},
 		}
 	}
 </script>

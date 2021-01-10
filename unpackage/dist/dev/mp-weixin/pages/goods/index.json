@@ -8,6 +8,7 @@
     "van-sticky": "/wxcomponents/weapp/dist/sticky/index",
     "van-tab": "/wxcomponents/weapp/dist/tab/index",
     "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+    "van-popup": "/wxcomponents/weapp/dist/popup/index",
     "goods-list": "/components/goodsList/index"
   }
 }

@@ -1,6 +1,8 @@
 <template>
 	<div class="page-me">
-		page-me
+		<div class="user-info-wrapper"></div>
+		<div class="user-actions-wrapper"></div>
+		<div class="user-collection-wrapper"></div>
 	</div>
 </template>
 
@@ -23,6 +25,25 @@
 
 <style lang="stylus" scoped>
 	.page-me {
-		background-color pink;
+		.user-info-wrapper {
+			width: 100%;
+			height: 400rpx;
+			background-color: #ccc;
+		}
+		.user-actions-wrapper {
+			width: 92%;
+			height: 500rpx;
+			background-color: pink;
+			margin:  -120rpx 0 56rpx 4%;
+			border-radius: 24rpx;
+			
+		}
+		.user-collection-wrapper {
+			width: 92%;
+			height: 500rpx;
+			background-color: pink;
+			margin: 0 0 40rpx 4%;
+			border-radius: 24rpx;
+		}
 	}
 </style>

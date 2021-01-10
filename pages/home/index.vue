@@ -1,24 +1,79 @@
 <template>
 	<div class="page-home">
-		<!-- 搜索兰 -->
 		<div class="page-home_search-bar">
-			<div class="page-home_search-bar__inputbtn"></div>
-			<div class="page-home_filter-bar"></div>
+			<!-- 搜索框样子的按钮 -->
+			<div class="page-home_search-bar__inputbtn borderbox" @click="filterBar_search_driveShow = true">
+				<FontAwesome type="fas fa-search" size="24" color="#CDCDCD" style="margin-right: 24rpx"></FontAwesome>
+				<span>搜索</span>
+				<!-- <FontAwesome type="fas fa-filter" size="36" color="red"></FontAwesome> -->
+			</div>
+
+			<!-- 筛选栏 -->
+			<div class="page-home_filter-bar">
+				<div class="page-home_filter-bar__local" @click="_filterBar_local_pageShow">
+					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{filter_local.cityName}}</span>
+					<FontAwesome type="fas fa-caret-down" size="24" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
+				</div>
+				<div class="page-home_filter-bar__time" @click="filterBar_time_SheetShow=true">
+					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{filter_time}}</span>
+					<FontAwesome type="fas fa-caret-down" size="24" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
+				</div>
+				<div class="page-home_filter-bar__type" @click="filterBar_type_SheetShow=true">
+					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{filter_type}}</span>
+					<FontAwesome type="fas fa-caret-down" size="24" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
+				</div>
+				<div class="page-home_filter-bar__more" @click="filterBar_more_driveShow=true">
+					<span style="margin-right: 0rpx; width: 100%;">更多</span>
+					<FontAwesome type="fas fa-filter" size="18" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
+				</div>
+			</div>
 			<div class="page-home_search-bar__mask"></div>
+
+			<!-- layout -->
 			<div class="page-home_search-bar__layout">
 				<van-tabs offset-top="0" z-index="20" swipeable>
 					<van-tab title="招标信息">
-						<newsList :newsListData="newsListData"></newsList>
+						<newsList :newsListData="newsListData" v-show="!loadingFlag"></newsList>
 					</van-tab>
-					<van-tab title="中标信息">中标信息</van-tab>
+					<van-tab title="中标信息">
+						<newsList :newsListData="newsListData" v-show="!loadingFlag"></newsList>
+					</van-tab>
 				</van-tabs>
 			</div>
 		</div>
+
+		<!-- 上滑菜单 - 时间 -->
+		<van-action-sheet @select="_filterBar_time_onSelect" :show="filterBar_time_SheetShow" @cancel="_filterBar_time_onClose"
+		 @click-overlay="_filterBar_time_onClose" :actions="filterBar_time_SheetActions" cancel-text="取消" />
+
+		<!-- 上滑菜单 - 类型 -->
+		<van-action-sheet @select="_filterBar_type_onSelect" :show="filterBar_type_SheetShow" @cancel="_filterBar_type_onClose"
+		 @click-overlay="_filterBar_type_onClose" :actions="filterBar_type_SheetActions" cancel-text="取消" />
+
+		<!-- 抽屉页 - 更多筛选 -->
+		<van-popup :show="filterBar_more_driveShow" @close="filterBar_more_driveShow = false" position="right" custom-style="height: 100%; width: 60%;">内容</van-popup>
+
+		<!-- 抽屉页 - 点击搜索框 -->
+		<van-popup :show="filterBar_search_driveShow" @close="filterBar_search_driveShow = false" position="bottom"
+		 custom-style="height: 100%; width: 100%;" class="van-popup-search">
+			<van-search :value="searchValue" placeholder="请输入搜索关键词" class="search-bar__search-input" shape="round" @search="_searchInputOnSearch"
+			 @change="_searchInputOnChange" @cancel="_searchInputOnCancel" :focus="filterBar_search_driveShow" />
+			<van-button v-show="searchValue===''" type="default" size="small" round @click="_searchInputOnCancel" class="search-bar__search-btn">取消</van-button>
+			<van-button v-show="searchValue" color="#EB5946" type="default" size="small" round @click="_searchInputOnSearch"
+			 class="search-bar__search-btn">确定</van-button>
+		</van-popup>
+
+		<div class="loading-wrapper" v-if="loadingFlag">
+			<van-loading color="#EB5946" v-show="loadingFlag"/>
+		</div>
+
 	</div>
 </template>
 
 <script>
 	import newsList from '@/components/newsList/index.vue'
+	// 引入icon
+	import FontAwesome from '@/components/Am-FontAwesome/index.vue'
 	export default {
 		// 挂载
 		onLaunch: function() {
@@ -26,9 +81,19 @@
 		},
 		// 显示
 		onShow: function() {
+			console.log('首页 Show')
+
+			// 页面显示的时候，检查是否有 地域 选择的对象，如果有，说明是从地域选择页面跳转回来的
+			if (getApp().globalData.localSelect) {
+				this.filter_local.cityName = getApp().globalData.localSelect.cityName
+				this.filter_local.cityCode = getApp().globalData.localSelect.cityCode
+			}
+
+			// 获取数据列表
+			this._http_get_newsListData()
+
 			// console.log(this.$store.getters.store_UserInfo)
 			// http_getPhone()
-			console.log('首页 Show')
 		},
 		// 隐藏
 		onHide: function() {
@@ -36,14 +101,178 @@
 		},
 		components: {
 			newsList,
+			FontAwesome,
 		},
 		data() {
 			return {
+				// http 请求中
+				loadingFlag: false,
+				// 列表数据
 				newsListData: [{
-					title: '标题标题标题标题标题标题标题标题标题',
-				}]
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, {
+					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+					local: '浙江省',
+					time: '一小时前',
+					viewCount: '99999',
+				}, ],
+
+				// 上滑菜单 - 时间 - 是否显示
+				filterBar_time_SheetShow: false,
+				// 上滑菜单 - 时间 - 选项
+				filterBar_time_SheetActions: [{
+						name: '一小时',
+					},
+					{
+						name: '今天',
+					},
+					{
+						name: '7天内',
+						subname: '7个自然日内',
+					},
+				],
+				// 上滑菜单 - 类型 - 是否显示
+				filterBar_type_SheetShow: false,
+				// 上滑菜单 - 类型 - 选项
+				filterBar_type_SheetActions: [{
+						name: '劳务招标',
+					},
+					{
+						name: '材料招标',
+					}
+				],
+				// 右滑菜单 - 更多 - 是否展示
+				filterBar_more_driveShow: false,
+				// 上滑菜单 - 搜索 - 是否展示
+				filterBar_search_driveShow: false,
+				// 搜索框内容
+				searchValue: '',
+
+				// 过滤项
+				// 地域
+				filter_local: {
+					cityName: '北京市',
+					cityCode: 11
+				},
+				// 时间
+				filter_time: '一小时前',
+				// 类型
+				filter_type: '劳务招标',
 
 			}
+		},
+		methods: {
+
+			// 上滑菜单 - 时间 - 取消
+			_filterBar_time_onClose() {
+				this.filterBar_time_SheetShow = false
+			},
+			// 上滑菜单 - 类型 - 取消
+			_filterBar_type_onClose() {
+				this.filterBar_type_SheetShow = false
+			},
+			// 上滑菜单 - 时间 - 选择
+			_filterBar_time_onSelect(event) {
+				console.log(event.detail)
+				this.filter_time = event.detail.name
+				this.filterBar_time_SheetShow = false
+			},
+			// 上滑菜单 - 类型 - 选择
+			_filterBar_type_onSelect(event) {
+				console.log(event.detail)
+				this.filter_type = event.detail.name
+				this.filterBar_type_SheetShow = false
+			},
+			// 打开地址选择页
+			_filterBar_local_pageShow() {
+				console.log(this.filter_local)
+				// 跳转到地址选择页，传入 page 当前页面路由， cityName 当前页筛选的城市名称, 城市代码 cityCode 
+				uni.navigateTo({
+					url: `/pages/localSelect/index?page=home&cityName=${this.filter_local.cityName}&&cityCode=${this.filter_local.cityCode}`,
+				})
+			},
+			
+			// 获取列表数据
+			_http_get_newsListData() {
+				console.log('http 获取列表数据')
+
+				this.loadingFlag = true
+
+
+				setTimeout(() => {
+					this.loadingFlag = false
+					// 获取完了之后，清空搜索框文字
+					this.searchValue = ''
+				}, 2000)
+
+			},
+			// 搜索框 变化
+			_searchInputOnChange(e) {
+				this.searchValue = e.detail
+			},
+			// 搜索框 取消
+			_searchInputOnCancel() {
+				console.log('搜索框取消')
+				this.searchValue = ''
+				this.filterBar_search_driveShow = false
+			},
+			// 搜索框 确定 
+			_searchInputOnSearch(e) {
+				console.log('搜索关键词↓')
+				console.log(this.searchValue)
+				this._http_get_newsListData()
+				this.filterBar_search_driveShow = false
+			},
+
+
 		}
 	}
 </script>
@@ -68,8 +297,8 @@
 			// box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
 			/deep/.van-tabs__wrap {
 				// box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
-					// position: fixed;
-					// top: 0;
+				// position: fixed;
+				// top: 0;
 				.van-tabs__nav {
 					width: 50%;
 					position: fixed;
@@ -96,7 +325,7 @@
 			/deep/.van-tabs__nav {
 				background-color: #fff;
 			}
-			
+
 			/deep/.van-tab__pane {
 				padding-top: 100rpx;
 			}
@@ -110,9 +339,16 @@
 				right: 28rpx;
 				height: 48rpx;
 				width: 210rpx;
-				background-color: pink;
-				border-radius: 24rpx;
+				background-color: #F8F9FA;
+				border-radius: 28rpx;
+				padding: 0 24rpx;
+				display: flex;
+				align-items: center;
+				font-size: 24rpx;
+				color: #BABABA;
+
 			}
+
 			.page-home_search-bar__mask {
 				z-index: 20;
 				position: fixed;
@@ -121,15 +357,102 @@
 				height: 88rpx;
 				background-color: #fff;
 			}
+
 			.page-home_filter-bar {
-				z-index: 999;
+				z-index: 50;
 				position: fixed;
 				top: 88rpx;
 				right: 0;
 				left: 0;
 				height: 100rpx;
 				background-color: #F8F9FA;
+				padding: 0 28rpx;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				text-align: center;
+				color: #646464;
+				font-size: 24rpx;
+
+				.page-home_filter-bar__local,
+				.page-home_filter-bar__time,
+				.page-home_filter-bar__type,
+				.page-home_filter-bar__more {
+					width: 20%;
+					height: 64rpx;
+					background-color: #fff;
+					border-radius: 16rpx;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					margin-right: 28rpx;
+					padding: 0 14rpx;
+				}
+
+				.page-home_filter-bar__local:active,
+				.page-home_filter-bar__time:active,
+				.page-home_filter-bar__type:active,
+				.page-home_filter-bar__more:active {
+					background-color: #EAEAEA;
+				}
+
+				.page-home_filter-bar__local {}
+
+				.page-home_filter-bar__time {}
+
+				.page-home_filter-bar__type {}
+
+				.page-home_filter-bar__more {
+					width: 16%;
+					margin-right: 0;
+				}
 			}
 		}
+	}
+
+
+	.van-popup__local-wrapper {
+		/deep/.van-bottom-enter-to {
+			padding-top: 100rpx;
+		}
+
+		.van-popup__local-wrapper__top-bar {
+			width: 100%;
+			height: 100rpx;
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			background-color: pink;
+		}
+	}
+
+
+	.van-popup-search {
+		/deep/.van-search {
+			width: 600rpx;
+		}
+
+		.search-bar__search-btn {
+			background-color: #fff;
+			position: absolute;
+			top: 24rpx;
+			right: 28rpx;
+
+			.van-button {}
+		}
+	}
+
+	.loading-wrapper {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(255, 255, 255, .5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 99999;
 	}
 </style>
