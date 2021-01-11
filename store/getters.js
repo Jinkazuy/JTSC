@@ -3,5 +3,9 @@
 
 // 用户信息(不含敏感信息)
 export const store_UserInfo = state => state.store_UserInfo
+// 用户信息(含敏感信息)
+export const store_UserInfoData = state => state.store_UserInfoData
+// token 
+export const store_token = state => state.store_token
 
 

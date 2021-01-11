@@ -87,7 +87,7 @@
 					// 弹窗
 					"van-popup": "/wxcomponents/weapp/dist/popup/index",
 					// 上滑菜单
-					 "van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index"
+					"van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index"
 				}
 			}
 		},
@@ -95,7 +95,17 @@
 		{
 			"path": "pages/me/index",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"backgroundColor": "#F2F2F2",
+				"usingComponents": {
+					// tab-layout
+					"van-tab": "/wxcomponents/weapp/dist/tab/index",
+					"van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+					// 浮层
+					"van-toast": "/wxcomponents/weapp/dist/toast/index",
+					// 按钮
+					"van-button": "/wxcomponents/weapp/dist/button/index"
+				}
 			}
 		},
 		// 地址选择页

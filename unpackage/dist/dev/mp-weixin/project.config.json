@@ -12,21 +12,23 @@
   "appid": "wx7366cc65c48f0709",
   "projectname": "JTSC",
   "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
+    "plugin": {
       "list": []
     },
     "game": {
-      "current": -1,
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "list": [
+        {
+          "name": "pages/me/index",
+          "pathName": "pages/me/index",
+          "scene": null
+        }
+      ]
     }
   }
 }

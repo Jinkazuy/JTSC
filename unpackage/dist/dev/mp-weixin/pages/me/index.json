@@ -1,4 +1,13 @@
 {
   "navigationBarTitleText": "我的",
-  "usingComponents": {}
+  "backgroundColor": "#F2F2F2",
+  "usingComponents": {
+    "van-tab": "/wxcomponents/weapp/dist/tab/index",
+    "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+    "van-toast": "/wxcomponents/weapp/dist/toast/index",
+    "van-button": "/wxcomponents/weapp/dist/button/index",
+    "font-awesome": "/components/Am-FontAwesome/index",
+    "news-list": "/components/newsList/index",
+    "goods-list": "/components/goodsList/index"
+  }
 }
