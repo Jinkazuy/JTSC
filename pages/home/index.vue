@@ -28,15 +28,16 @@
 				</div>
 			</div>
 			<div class="page-home_search-bar__mask"></div>
-
 			<!-- layout -->
 			<div class="page-home_search-bar__layout">
-				<van-tabs offset-top="0" z-index="20" swipeable>
+				<van-tabs offset-top="0" z-index="20" swipeable @click="tabClick">
 					<van-tab title="招标信息">
-						<newsList :newsListData="newsListData" v-show="!loadingFlag"></newsList>
+						<newsList :newsListData="newsListData"></newsList>
+						<van-empty v-if="!newsListData.length" description="暂无数据" />
 					</van-tab>
 					<van-tab title="中标信息">
-						<newsList :newsListData="newsListData" v-show="!loadingFlag"></newsList>
+						<newsList :newsListData="newsListData"></newsList>
+						<van-empty v-if="!newsListData.length" description="暂无数据" />
 					</van-tab>
 				</van-tabs>
 			</div>
@@ -64,8 +65,10 @@
 		</van-popup>
 
 		<div class="loading-wrapper" v-if="loadingFlag">
-			<van-loading color="#EB5946" v-show="loadingFlag"/>
+			<van-loading color="#EB5946" v-show="loadingFlag" />
 		</div>
+		
+		<van-toast id="van-toast" />
 
 	</div>
 </template>
@@ -74,6 +77,11 @@
 	import newsList from '@/components/newsList/index.vue'
 	// 引入icon
 	import FontAwesome from '@/components/Am-FontAwesome/index.vue'
+	// 获取招中标列表 
+	import API_home from '@/api/home/API_home.js'
+	// toast
+	import Toast from '@/wxcomponents/weapp/dist/toast/toast';
+
 	export default {
 		// 挂载
 		onLaunch: function() {
@@ -107,63 +115,15 @@
 			return {
 				// http 请求中
 				loadingFlag: false,
+				// 请求参数
+				httpParams: {
+					type: 1, // 类型1招标2中标
+					page: 1, // 页码，默认首页
+				},
 				// 列表数据
-				newsListData: [{
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, {
-					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-					local: '浙江省',
-					time: '一小时前',
-					viewCount: '99999',
-				}, ],
+				newsListData: [],
+				// 是否有更多数据
+				newsListDataIsMore: true,
 
 				// 上滑菜单 - 时间 - 是否显示
 				filterBar_time_SheetShow: false,
@@ -209,7 +169,34 @@
 
 			}
 		},
+		// 页面触底
+		onReachBottom() {
+			console.log('页面触底')
+			if (!this.newsListDataIsMore) {
+				Toast('暂无更多数据~')
+				return
+			}
+			this.httpParams.page++
+			this._http_get_newsListData()
+		},
 		methods: {
+
+			// 获取列表数据
+			async _http_get_newsListData() {
+				console.log('http 获取列表数据')
+				this.loadingFlag = true
+				let httpRes = await API_home.http_get_biddingList(this.httpParams)
+				console.log(httpRes)
+				if (!httpRes) {
+					this.newsListDataIsMore = false
+					this.loadingFlag = false
+					return
+				}
+				this.loadingFlag = false
+				this.searchValue = ''
+				this.newsListData.push(...httpRes)
+				console.log(this.newsListData)
+			},
 
 			// 上滑菜单 - 时间 - 取消
 			_filterBar_time_onClose() {
@@ -239,21 +226,8 @@
 					url: `/pages/localSelect/index?page=home&cityName=${this.filter_local.cityName}&&cityCode=${this.filter_local.cityCode}`,
 				})
 			},
-			
-			// 获取列表数据
-			_http_get_newsListData() {
-				console.log('http 获取列表数据')
-
-				this.loadingFlag = true
 
 
-				setTimeout(() => {
-					this.loadingFlag = false
-					// 获取完了之后，清空搜索框文字
-					this.searchValue = ''
-				}, 2000)
-
-			},
 			// 搜索框 变化
 			_searchInputOnChange(e) {
 				this.searchValue = e.detail
@@ -271,8 +245,28 @@
 				this._http_get_newsListData()
 				this.filterBar_search_driveShow = false
 			},
+			// tablayout 点击时 更改请求列表数据的类型
+			tabClick(event) {
+				console.log(event)
+				// event.detail.index 是tab的索引，从0开始
+				// event.detail.index 是 0 说明点击的是招标信息
+				// event.detail.index 是 1 说明点击的是中标信息
 
+				// 类型1招标2中标
+				switch (event.detail.index) {
+					case 0:
+						this.httpParams.type = 1
+						break;
+					case 1:
+						this.httpParams.type = 2
+						break;
+				}
 
+				this.httpParams.page = 1
+				this.newsListDataIsMore = true
+				this.newsListData = []
+				this._http_get_newsListData()
+			}
 		}
 	}
 </script>

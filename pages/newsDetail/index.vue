@@ -41,7 +41,9 @@
 	import Toast from '@/wxcomponents/weapp/dist/toast/toast'
 	export default {
 		onShow(options) {
-			console.log(options)
+			console.log('id↓')
+			// 路由传参
+			console.log(this.$mp.query.id)
 			// 判断用户是否登录，如果已登录，判断是否收藏了该文章
 		},
 		components: {
