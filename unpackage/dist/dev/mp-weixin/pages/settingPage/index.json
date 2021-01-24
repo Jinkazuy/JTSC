@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "设置",
+  "usingComponents": {
+    "van-cell": "/wxcomponents/weapp/dist/cell/index",
+    "van-cell-group": "/wxcomponents/weapp/dist/cell-group/index",
+    "van-button": "/wxcomponents/weapp/dist/button/index",
+    "van-dialog": "/wxcomponents/weapp/dist/dialog/index"
+  }
+}

@@ -1,50 +1,59 @@
 <template>
-	<div class="news-detail borderbox">
-		<div class="news-detail__title-box">
-			<p class="news-detail__title-box__title">{{title}}</p>
-			<div class="news-detail__title-box__desc">
-				<span class="news-detail__title-box__desc-local">{{local}}</span>
-				<span class="news-detail__title-box__desc-doc">·</span>
-				<span class="news-detail__title-box__desc-date">{{date}}</span>
+	<div>
+		<div class="news-detail borderbox" v-if="getDataResOk" >
+			<div class="news-detail__title-box">
+				<p class="news-detail__title-box__title">{{title}}</p>
+				<div class="news-detail__title-box__desc">
+					<!-- <span class="news-detail__title-box__desc-local">{{local}}</span> -->
+					<!-- <span class="news-detail__title-box__desc-doc">·</span> -->
+					<span class="news-detail__title-box__desc-date">{{publish_date}}</span>
+				</div>
+				<div class="news-detail__title-box__bottom-line"></div>
 			</div>
-			<div class="news-detail__title-box__bottom-line"></div>
+			<div class="news-detail__info-box" v-html="content"></div>
+			<div class="news-detail__tool-bar">
+				<div class="news-detail__tool-bar__back" @click="_goBack">
+					<FontAwesome type="fas fa-chevron-left" size="36" color="#ccc"></FontAwesome>
+				</div>
+				<div class="news-detail__tool-bar__collection" @click="_collection" v-if="!isCollection">
+					<FontAwesome type="fas fa-star" size="36" color="#fff"></FontAwesome>
+					<span style="margin-left: 24rpx;">收 藏</span>
+				</div>
+				<div class="news-detail__tool-bar__collection iscollection" v-if="isCollection">
+					<FontAwesome type="fas fa-star" size="36" color="#fff"></FontAwesome>
+					<span style="margin-left: 24rpx;">已收藏</span>
+				</div>
+				<div class="news-detail__tool-bar__share" @click="shareShow = true">
+					<FontAwesome type="fas fa-share" size="36" color="#fff"></FontAwesome>
+					<span style="margin-left: 24rpx;">分 享</span>
+				</div>
+			</div>
+			<!-- toase -->
+			<van-toast id="van-toast" />
+			<!-- 分享面板 -->
+			<van-share-sheet :show="shareShow" title="立即分享给好友" :options="shareOptions" @select="_shareOnSelect" @close="_shareOnClose" />
+
 		</div>
-		<div class="news-detail__info-box">
-			{{desc}}
-		</div>
-		<div class="news-detail__tool-bar">
-			<div class="news-detail__tool-bar__back" @click="_goBack">
-				<FontAwesome type="fas fa-chevron-left" size="36" color="#ccc"></FontAwesome>
-			</div>
-			<div class="news-detail__tool-bar__collection" @click="_collection" v-if="!isCollection">
-				<FontAwesome type="fas fa-star" size="36" color="#fff"></FontAwesome>
-				<span style="margin-left: 24rpx;">收 藏</span>
-			</div>
-			<div class="news-detail__tool-bar__collection iscollection" v-if="isCollection">
-				<FontAwesome type="fas fa-star" size="36" color="#fff"></FontAwesome>
-				<span style="margin-left: 24rpx;">已收藏</span>
-			</div>
-			<div class="news-detail__tool-bar__share" @click="shareShow = true">
-				<FontAwesome type="fas fa-share" size="36" color="#fff"></FontAwesome>
-				<span style="margin-left: 24rpx;">分 享</span>
-			</div>
-		</div>
-		<!-- toase -->
-		<van-toast id="van-toast" />
-		<!-- 分享面板 -->
-		<van-share-sheet :show="shareShow" title="立即分享给好友" :options="shareOptions" @select="_shareOnSelect" @close="_shareOnClose" />
+		<!-- 空状态 -->
+		<van-empty v-if="!getDataResOk" description="获取数据失败" />
 	</div>
 </template>
 
 <script>
 	import FontAwesome from '@/components/Am-FontAwesome/index.vue'
 	import Toast from '@/wxcomponents/weapp/dist/toast/toast'
+	import API_home from '@/api/home/API_home.js'
 	export default {
 		onShow(options) {
 			console.log('id↓')
 			// 路由传参
 			console.log(this.$mp.query.id)
-			// 判断用户是否登录，如果已登录，判断是否收藏了该文章
+			// 获取详情页数据
+			this._http_get_DetailData(this.$mp.query.id)
+
+
+			// todo: 判断用户是否登录，如果已登录，判断是否收藏了该文章
+
 		},
 		components: {
 			FontAwesome
@@ -53,12 +62,14 @@
 			return {
 				title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标',
 				local: '山东省',
-				date: '一小时前',
-				desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
+				publish_date: '一小时前',
+				content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
 				// 是否已收藏
 				isCollection: false,
 				// 是否展示分享面板
 				shareShow: false,
+				// 获取数据是否成功
+				getDataResOk: false,
 				// 分享面板选项
 				shareOptions: [{
 						name: '微信',
@@ -109,6 +120,23 @@
 			_shareOnClose() {
 				this.shareShow = false
 			},
+			// 获取详情页数据
+			async _http_get_DetailData(id) {
+				let res = await API_home.http_get_biddingDetail(id)
+				console.log('详情页请求结果')
+				console.log(res)
+				if (!res) {
+					console.log('获取数据失败')
+					this.getDataResOk = false
+					return
+				}
+
+				this.getDataResOk = true
+				this.title = res.title
+				this.publish_date = res.publish_date
+				this.content = res.content
+
+			}
 		}
 	}
 </script>

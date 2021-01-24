@@ -3,20 +3,20 @@
 		<!-- 个人中心 -->
 		<div class="page-me" v-show="userIsLogin">
 			<!-- 用户信息 -->
-			<div class="user-info-wrapper borderbox" :style="{ backgroundImage: 'url('+avater+')' }">
+			<div class="user-info-wrapper borderbox" :style="{ backgroundImage: 'url('+store_UserInfoData.avatarUrl+')' }">
 				<div class="user-info-wrapper__userinfo">
 					<div class="user-info-wrapper__userinfo-avater">
-						<img :src="avater">
+						<img :src="store_UserInfoData.avatarUrl">
 					</div>
 					<div class="user-info-wrapper__userinfo-text-wrapper">
-						<div class="user-info-wrapper__userinfo-text-wrapper__username">JinKazuya</div>
-						<div class="user-info-wrapper__userinfo-text-wrapper__userphone">1880***8710</div>
+						<div class="user-info-wrapper__userinfo-text-wrapper__username nowrap">{{store_UserInfoData.nickName}}</div>
+						<div class="user-info-wrapper__userinfo-text-wrapper__userphone">{{store_UserInfoData.mobile}}</div>
 						<span class="user-info-wrapper__userinfo-text-wrapper__userintegral-wrapper borderbox">
 							<FontAwesome type="fas fa-atom" size="20" color="#FFD80A"></FontAwesome>
 							<span class="user-info-wrapper__userinfo-text-wrapper__userintegral-wrapper-num">999999999</span>
 						</span>
 					</div>
-					<div class="user-info-wrapper__setting-wrapper">
+					<div class="user-info-wrapper__setting-wrapper" @click="toSetting">
 						<FontAwesome type="fas fa-cog" size="28" color="#fff"></FontAwesome>
 						<span class="user-info-wrapper__setting-wrapper-btn">设置</span>
 					</div>
@@ -119,7 +119,7 @@
 		<div class="no-login-wrapper" v-if="!userIsLogin">
 			<div class="no-login-wrapper__logo-box">
 				<div class="no-login-wrapper__logo-box-logo">
-					<img :src="mockGoodsimg">
+					<img :src="logoUrl">
 				</div>
 				<div class="no-login-wrapper__logo-box-text">
 					交小哇
@@ -134,7 +134,8 @@
 			<!-- <div class="no-login-wrapper__login-box" @click="_login">微 信 登 录</div> -->
 			<div class="no-login-wrapper__agreement-box">
 				<span style="color: #999;margin-right: 16rpx;">登录代表您已同意</span>
-				<span style="color: #EB5946;">交小哇用户协议、隐私协议</span>
+				<span style="color: #EB5946;" @click="toRegistrationAgreement">交小哇用户协议、</span>  
+				<span style="color: #EB5946;" @click="toPrivacyPolicy">隐私协议</span>  
 			</div>
 		</div>
 		<van-toast id="van-toast" />
@@ -146,8 +147,7 @@
 	import newsList from '@/components/newsList/index.vue'
 	import goodsList from '@/components/goodsList/index.vue'
 
-	import avater from '@/static/images/goods/goodsInfo/goodsImg.png'
-	import mockGoodsimg from '@/static/images/mock/mock-goodsimg.png'
+	import logoUrl from '@/static/images/logo.png'
 
 	// 用户是否已登录
 	import {
@@ -166,12 +166,13 @@
 
 	export default {
 		// 挂载
-		onLaunch: function() {
-			console.log('我的 Launch')
+		onLoad() {
+			console.log('我的 onLoad')
 		},
 		// 显示
 		async onShow() {
 			console.log('我的 Show')
+			// 判断当前页的 userIsLogin 是否是 false，如果是的话，说明用户未登录，那么
 			this.userIsLogin = await this._checkUserLogin()
 			// 如果用户没登录，就执行后续登录流程
 			if (!this.userIsLogin) {
@@ -185,7 +186,7 @@
 			}
 		},
 		// 隐藏
-		onHide: function() {
+		async onHide() {
 			console.log('我的 Hide')
 		},
 		components: {
@@ -196,7 +197,6 @@
 		computed: {
 			// vuex提供的辅助函数，拿到store/getters.js向外暴露的内容；
 			...mapGetters([
-				'store_UserInfo',
 				'store_UserInfoData', // 用户详细数据
 				'store_token'
 			])
@@ -206,14 +206,14 @@
 			return {
 				// 用户是否已登录
 				userIsLogin: false,
-
-				avater,
 				// http 请求中
 				loadingFlag: false,
 				// 授权按钮是否显示，当没有获取用户授权时，显示授权按钮
 				onLoginBTN: false,
 				// 获取用户手机号按钮
 				getPhoneBTN: false,
+				// logo 图片
+				logoUrl: logoUrl,
 				// 列表数据
 				newsListData: [{
 					title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
@@ -276,7 +276,7 @@
 						price: '价格详询',
 						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
 						descTag: '热销',
-						imgSrc: mockGoodsimg,
+						imgSrc: logoUrl,
 						tags: '标签标签标签标签标签标签标签标签',
 						// 促销文案
 						promotion: {
@@ -290,7 +290,7 @@
 						price: '价格详询',
 						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
 						descTag: '热销',
-						imgSrc: mockGoodsimg,
+						imgSrc: logoUrl,
 						tags: '标签标签标签标签标签标签标签标签',
 						// 促销文案
 						promotion: {
@@ -304,7 +304,7 @@
 						price: '价格详询',
 						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
 						descTag: '热销',
-						imgSrc: mockGoodsimg,
+						imgSrc: logoUrl,
 						tags: '标签标签标签标签标签标签标签标签',
 						// 促销文案
 						promotion: {
@@ -318,7 +318,7 @@
 						price: '价格详询',
 						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
 						descTag: '热销',
-						imgSrc: mockGoodsimg,
+						imgSrc: logoUrl,
 						tags: '标签标签标签标签标签标签标签标签',
 						// 促销文案
 						promotion: {
@@ -332,7 +332,7 @@
 						price: '价格详询',
 						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
 						descTag: '热销',
-						imgSrc: mockGoodsimg,
+						imgSrc: logoUrl,
 						tags: '标签标签标签标签标签标签标签标签',
 						// 促销文案
 						promotion: {
@@ -347,10 +347,10 @@
 		methods: {
 			...mapMutations({
 				// 这里映射了这个方法，那么在调用x的时候，就等于使用了this.$store.commit('SET_SINGER', value)这个方法；
-				setUserInfo: 'setUserInfo',
-				setToken: 'setToken',
 				setUserPhone: 'setUserPhone',
 				setUserInfoData: 'setUserInfoData',
+				setToken: 'setToken',
+				setTokenExpiration: 'setTokenExpiration',
 			}),
 			// 获取列表数据
 			_http_get_newsListData() {
@@ -389,7 +389,7 @@
 
 					// 拿到用户基本信息此时的操作，
 					// 将用户基本信息储存到本地，这步其实没什么用，因为用户登录后，会获取用户更详细的信息
-					this.setUserInfo(e.target.userInfo)
+					this.setUserInfoData(e.target.userInfo)
 
 					// 用户登录后，向后台换取token存储到本地
 					// 这里不去效验本地是否有token，因为：用户信息可能更新、变动，
@@ -441,7 +441,7 @@
 						console.log(res)
 						// 获取成功，存本地
 						// 将用户基本信息储存到本地，这步其实没什么用，因为用户登录后，会获取用户更详细的信息
-						this.setUserInfo(res.userInfo)
+						this.setUserInfoData(res.userInfo)
 
 						// 获取token，将用户加密信息发送给后台
 						this.loginAndGetToken(res.encryptedData, res.iv)
@@ -459,9 +459,21 @@
 						// 拿到用户登录Code，发送给后台，后台返回token值，将token存储到本地中；
 						if (loginRes.code) {
 							console.log('登录，获取token')
+							console.log('todo: 设置token 和 token过期时间')
 							// let httpRes = await http_login_setToken(loginRes.code, encryptedData, iv)
-							let httpRes = true
+							// todo: 设置token 和 token过期时间
+							// todo: 设置token 和 token过期时间
+							// todo: 设置token 和 token过期时间
+							// todo: 设置token 和 token过期时间
+							// todo: 设置token 和 token过期时间
+							// todo: 设置token 和 token过期时间
+							this.setToken('ttttttkkkkkkeeeeennnn')
 							
+							// 设置token过期时间，当前时间+7天
+							let expiration = new Date().getTime() + 604800000 // (7*24*60*60*1000)
+							this.setTokenExpiration(expiration)
+							let httpRes = true
+
 
 							// 登录失败
 							console.log(httpRes)
@@ -483,13 +495,18 @@
 								// 获取token成功后，获取用户详细数据
 								// let getUD = await http_getUserInfoData()
 								// todo 获取token成功后，将用户敏感信息存储到vuex
-								this.setUserInfoData({nickName: 'testUserNickName'})
+								// this.setUserInfoData({
+								// 	nickName: 'testUserNickName----------'
+								// })
+								console.log('================')
+								console.log(this.store_UserInfoData)
 								let getUD = true
 
 								// 如果获取用户详细信息成功，就判断是否有手机号
 								if (getUD) {
 									// 如果获取到的用户详细信息中没有手机号，说明用户之前登陆没有设置手机号，其实逻辑上是不通的，应该是设置手机号了
-									if (this.store_UserInfoData.mobile === '' || this.store_UserInfoData.mobile === null || !this.store_UserInfoData.mobile) {
+									if (this.store_UserInfoData.mobile === '' || this.store_UserInfoData.mobile === null || !this.store_UserInfoData
+										.mobile) {
 										Toast.clear()
 
 										// 显示获取手机号
@@ -500,7 +517,7 @@
 									} else {
 
 										// 进入到里，此时，用户信息、用户手机号、token都获取成功，确认用户登录
-										if (this.store_UserInfo.nickName !== null) {
+										if (this.store_UserInfoData.nickName !== null) {
 											// this.backOnePage()
 											this.userIsLogin = true
 										}
@@ -564,6 +581,24 @@
 					console.log('用户拒绝授权获取手机号')
 				}
 			},
+			// 跳转用户协议
+			toRegistrationAgreement(){
+				uni.navigateTo({
+					url: `/pages/registrationAgreement/index`
+				})
+			},
+			// 隐私政策
+			toPrivacyPolicy(){
+				uni.navigateTo({
+					url: `/pages/privacyPolicy/index`
+				})
+			},
+			// 设置页
+			toSetting(){
+				uni.navigateTo({
+					url: `/pages/settingPage/index`
+				})
+			},
 		}
 	}
 </script>
@@ -582,18 +617,22 @@
 			padding: 40rpx 28rpx;
 
 			.user-info-wrapper__userinfo {
-				position: relative;
+				position: absolute;
+				top: 40rpx;
+				left: 28rpx;
+				right: 28rpx;
 				z-index: 2;
 				color: #fff;
-				display: flex;
-				align-items: center;
 
 				.user-info-wrapper__userinfo-avater {
+					position: absolute;
+					left: 0;
 					width: 160rpx;
 					height: 160rpx;
 					border-radius: 80rpx;
 					border: 2rpx solid #FFF;
 					overflow: hidden;
+					margin-right: 30rpx;
 
 					img {
 						width: 100%;
@@ -602,10 +641,12 @@
 				}
 
 				.user-info-wrapper__userinfo-text-wrapper {
-					margin-left: 30rpx;
-					position: relative;
+					position: absolute;
+					left: 180rpx;
+					right: 40rpx;
 
 					.user-info-wrapper__userinfo-text-wrapper__username {
+						width: 70%;
 						font-size: 40rpx;
 						font-weight: 700;
 						line-height: 1;
@@ -861,7 +902,7 @@
 				border-radius: 32rpx;
 				overflow: hidden;
 				margin-bottom: 20rpx;
-				background-color: #ccc;
+				background-color: #fff;
 
 				img {
 					width: 100%;

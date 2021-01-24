@@ -110,7 +110,9 @@
 					// 浮层
 					"van-toast": "/wxcomponents/weapp/dist/toast/index",
 					// 按钮
-					"van-button": "/wxcomponents/weapp/dist/button/index"
+					"van-button": "/wxcomponents/weapp/dist/button/index",
+					// 上滑菜单
+					"van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index"
 				}
 			}
 		},
@@ -145,7 +147,9 @@
 					// 分享
 					"van-share-sheet": "/wxcomponents/weapp/dist/share-sheet/index",
 					// 弹出层
-					"van-popup": "/wxcomponents/weapp/dist/popup/index"
+					"van-popup": "/wxcomponents/weapp/dist/popup/index",
+					// 空状态
+					"van-empty": "/wxcomponents/weapp/dist/empty/index"
 				}
 			}
 		},
@@ -161,6 +165,54 @@
 					// 索引滚动组件
 					// "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
 					// "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+				}
+			}
+		},
+		{
+			"path": "pages/registrationAgreement/index",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					// "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					// "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+				}
+			}
+		},
+		{
+			"path": "pages/privacyPolicy/index",
+			"style": {
+				"navigationBarTitleText": "隐私政策",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					// "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					// "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+				}
+			}
+		},
+		{
+			"path": "pages/settingPage/index",
+			"style": {
+				"navigationBarTitleText": "设置",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					// "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					// "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+					// 单元格
+					"van-cell": "/wxcomponents/weapp/dist/cell/index",
+					"van-cell-group": "/wxcomponents/weapp/dist/cell-group/index",
+					"van-button": "/wxcomponents/weapp/dist/button/index",
+					// 弹窗
+					"van-dialog": "/wxcomponents/weapp/dist/dialog/index"
 				}
 			}
 		}

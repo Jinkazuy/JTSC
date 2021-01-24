@@ -7,7 +7,10 @@
     "pages/me/index",
     "pages/localSelect/index",
     "pages/newsDetail/index",
-    "pages/aboutUs/index"
+    "pages/aboutUs/index",
+    "pages/registrationAgreement/index",
+    "pages/privacyPolicy/index",
+    "pages/settingPage/index"
   ],
   "subPackages": [],
   "window": {
@@ -47,5 +50,6 @@
       "desc": "交小哇申请使用您的位置"
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap64.json"
 }

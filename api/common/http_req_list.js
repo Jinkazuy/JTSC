@@ -3,7 +3,7 @@
 
 // # 路由前缀
 // export const baseUrl = 'http://39.106.32.178:8020'
-export const baseUrl = 'http://www.jiaotonggongcheng.cn/api/v1'
+export const baseUrl = 'https://www.jiaotonggongcheng.cn/api/v1'
 
 // ================== 我的 ==================
 
@@ -20,4 +20,10 @@ export const url_test = 'https://locally.uieee.com/slides'
 // # 获取招中标列表
 // www.jiaotonggongcheng.cn/api/v1/index/[type]/[page]
 export const url_get_biddingList = baseUrl+'/index/'
+
+
+// # 获取招中标列表
+// www.jiaotonggongcheng.cn/api/v1/detail/[id]
+export const url_get_biddingDetail = baseUrl+'/detail/'
+
 

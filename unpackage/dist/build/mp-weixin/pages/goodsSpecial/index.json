@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "专题列表",
+  "usingComponents": {
+    "goods-list": "/components/goodsList/index"
+  }
+}

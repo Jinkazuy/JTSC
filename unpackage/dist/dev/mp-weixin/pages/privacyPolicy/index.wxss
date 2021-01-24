@@ -1,0 +1,23 @@
+.privacyPolicy.data-v-eaac2818 {
+  padding: 28rpx;
+  line-height: 1.4;
+}
+.privacyPolicy .page-header.data-v-eaac2818 {
+  text-align: center;
+  font-size: 50rpx;
+  font-weight: 700;
+  margin-bottom: 50rpx;
+}
+.privacyPolicy .desc-item-box.data-v-eaac2818 {
+  margin: 28rpx 0;
+}
+.privacyPolicy .desc-item-box .desc-item-box__tit.data-v-eaac2818 {
+  font-weight: 700;
+  font-size: 34rpx;
+  margin-bottom: 14rpx;
+}
+.privacyPolicy .desc-item-box .desc-item-box__info.data-v-eaac2818 {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+

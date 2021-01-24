@@ -1,0 +1,42 @@
+.setting-page.data-v-6b9a2399 {
+  padding: 28rpx;
+}
+.setting-page .logout.data-v-6b9a2399 {
+  margin-top: 60rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.setting-page .logout.data-v-6b9a2399 .van-button {
+  color: #222 !important;
+}
+.setting-page .logout.data-v-6b9a2399 .van-button /deep/.van-button__text {
+  color: #222;
+}
+.setting-page .logo-box.data-v-6b9a2399 {
+  position: absolute;
+  left: 50%;
+  bottom: 40rpx;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  text-align: center;
+}
+.setting-page .logo-box .logo-box__name.data-v-6b9a2399 {
+  color: #999;
+  font-weight: 700;
+  font-size: 40rppx;
+}
+.setting-page .logo-box .logo-box__slogan.data-v-6b9a2399 {
+  margin-top: 10px;
+  color: #999;
+  font-size: 20rppx;
+}
+
+
+page {
+	background-color: #f6f6f6;
+}
+

@@ -1,0 +1,23 @@
+.registrationAgreement.data-v-575022aa {
+  padding: 28rpx;
+  line-height: 1.4;
+}
+.registrationAgreement .page-header.data-v-575022aa {
+  text-align: center;
+  font-size: 50rpx;
+  font-weight: 700;
+  margin-bottom: 50rpx;
+}
+.registrationAgreement .desc-item-box.data-v-575022aa {
+  margin: 28rpx 0;
+}
+.registrationAgreement .desc-item-box .desc-item-box__tit.data-v-575022aa {
+  font-weight: 700;
+  font-size: 34rpx;
+  margin-bottom: 14rpx;
+}
+.registrationAgreement .desc-item-box .desc-item-box__info.data-v-575022aa {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+

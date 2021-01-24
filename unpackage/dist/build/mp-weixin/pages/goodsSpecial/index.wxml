@@ -1,0 +1,1 @@
+<view class="goods-special clearfix _div data-v-0079bdfe"><goods-list vue-id="bdbcf132-1" goodsListData="{{goodsListData}}" class="data-v-0079bdfe" bind:__l="__l"></goods-list></view>

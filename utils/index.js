@@ -24,23 +24,25 @@ export const formatDate  = function(d) {
 // 是否已登录
 // 检测本地store数据中,是否已有用户数据;
 export const isLogin = function() {
-	if (store.getters.store_token === null || store.getters.store_token === '') {
-		// 判断是否有token
-		return false
-	} else if (store.getters.store_tokenExpiration === null) {
-		// 判断是否有token的过期时间
-		return false
-	} else if(new Date().getTime() >= store.getters.store_tokenExpiration){
-		// 判断当前时间毫秒数 是否 大于 token过期时间
-		console.log('token超时')
-		return false
-	} else if(store.getters.store_UserInfoData.mobile === null || store.getters.store_UserInfoData.mobile === ''){
+	if(store.getters.store_UserInfoData.mobile === null || store.getters.store_UserInfoData.mobile === ''){
 		// 判断当前时间毫秒数 是否 大于 token过期时间
 		console.log('手机号为空')
 		return false
 	} else if(store.getters.store_UserInfoData.nickName === null || store.getters.store_UserInfoData.nickName === ''){
 		// 判断当前时间毫秒数 是否 大于 token过期时间
 		console.log('用户名为空')
+		return false
+	} else if (store.getters.store_token === null || store.getters.store_token === '') {
+		// 判断是否有token
+		console.log('没有token')
+		return false
+	} else if (store.getters.store_tokenExpiration === null || store.getters.store_tokenExpiration === '') {
+		// 判断是否有token的过期时间
+		console.log('没有token过期时间')
+		return false
+	} else if(new Date().getTime() >= store.getters.store_tokenExpiration){
+		// 判断当前时间毫秒数 是否 大于 token过期时间
+		console.log('token超时')
 		return false
 	}
 	console.log('登陆成功,登录过期时间 => ' + formatDate(new Date(store.getters.store_tokenExpiration)))
