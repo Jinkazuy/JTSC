@@ -1,0 +1,72 @@
+.directories-list-wrapper.data-v-516b03be {
+  width: 100%;
+  color: #222;
+}
+.directories-list-wrapper .directories-list__item-wrapper.data-v-516b03be {
+  float: left;
+  width: 49%;
+  height: 606rpx;
+  background-color: #fff;
+  border-radius: 24rpx;
+  margin-bottom: 20rpx;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-img-box.data-v-516b03be {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  border: 6rpx solid #ec5c5e;
+  border-radius: 24rpx 24rpx 0 0;
+  overflow: hidden;
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-info-box.data-v-516b03be {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  padding: 20rpx;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-info-box .directories-list__item-wrapper-info-box__directories-name.data-v-516b03be {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.4;
+  margin-bottom: 10rpx;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-info-box .directories-list__item-wrapper-info-box__directories-desc.data-v-516b03be {
+  font-size: 24rpx;
+  color: #222;
+  margin-bottom: 10rpx;
+  line-height: 1.4;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-info-box .directories-list__item-wrapper-info-box__directories-desc .directories-list__item-wrapper-info-box__directories-desc__tags.data-v-516b03be {
+  color: #e25e59;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-info-box .directories-list__item-wrapper-info-box__directories-tags.data-v-516b03be {
+  background-color: #fdf7ad;
+  font-size: 24rpx;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-info-box .directories-list__item-wrapper-info-box__active-bar.data-v-516b03be {
+  position: absolute;
+  bottom: 28rpx;
+  right: 20rpx;
+  left: 20rpx;
+  background-color: #fff;
+  padding-top: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.directories-list-wrapper .directories-list__item-wrapper .directories-list__item-wrapper-info-box .directories-list__item-wrapper-info-box__active-bar .directories-list__item-wrapper-info-box__directories-price.data-v-516b03be {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #eb5946;
+}
+.directories-list-wrapper .directories-list__item-wrapper.data-v-516b03be:nth-child(odd) {
+  margin-right: 2%;
+}
+

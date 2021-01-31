@@ -33,7 +33,7 @@
 		<div class="pjkk-wrapper borderbox">
 			<div class="pjkk__item" v-for="(item, index) in img_pjkkList" :key="index" @click="_openGoodsSpecial(item.itemCode)">
 				<img :src="item.imgSrc">
-				<span class="pjkk__desc">产品名称</span>
+				<span class="pjkk__desc">{{item.itemName}}</span>
 			</div>
 		</div>
 		<!-- 瓷片区 -->
@@ -42,7 +42,7 @@
 			<div class="porcelain-wrapper__body">
 				<van-row gutter="10">
 					<van-col span="16" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;" @click="_openGoodsSpecial('1-1')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;" @click="_openGoodsSpecialByKeyWord('1-1')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #77929C">
 									xxxxxxxxxxxxxx专区
@@ -57,7 +57,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #F6F6F6;" @click="_openGoodsSpecial('1-2')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #F6F6F6;" @click="_openGoodsSpecialByKeyWord('1-2')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #222222">
 									xxxxxxxxxxxxxx专区
@@ -75,7 +75,7 @@
 				<div class="row-space"></div>
 				<van-row gutter="10">
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #FFCA99;" @click="_openGoodsSpecial('2-1')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #FFCA99;" @click="_openGoodsSpecialByKeyWord('2-1')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #D27E30">
 									xxxxxxxxxxxxxx专区
@@ -90,7 +90,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #B0DAC8;" @click="_openGoodsSpecial('2-2')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #B0DAC8;" @click="_openGoodsSpecialByKeyWord('2-2')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #5B917B">
 									xxxxxxxxxxxxxx专区
@@ -105,7 +105,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;" @click="_openGoodsSpecial('2-3')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8F3F6;" @click="_openGoodsSpecialByKeyWord('2-3')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #77929C">
 									xxxxxxxxxxxxxx专区
@@ -123,7 +123,7 @@
 				<div class="row-space"></div>
 				<van-row gutter="10">
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #D0DAF0;" @click="_openGoodsSpecial('3-1')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #D0DAF0;" @click="_openGoodsSpecialByKeyWord('3-1')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #6C81A5">
 									xxxxxxxxxxxxxx专区
@@ -138,7 +138,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8DEBB;" @click="_openGoodsSpecial('3-2')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #E8DEBB;" @click="_openGoodsSpecialByKeyWord('3-2')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #D1A370">
 									xxxxxxxxxxxxxx专区
@@ -153,7 +153,7 @@
 						</div>
 					</van-col>
 					<van-col span="8" class="porcelain-wrapper__body_item">
-						<div class="porcelain-wrapper__body_item-innter" style="background-color: #EBD3BB;" @click="_openGoodsSpecial('3-3')">
+						<div class="porcelain-wrapper__body_item-innter" style="background-color: #EBD3BB;" @click="_openGoodsSpecialByKeyWord('3-3')">
 							<div class="porcelain-wrapper__body_item-innter__desc-box">
 								<div class="porcelain-wrapper__body_item-innter__desc-box-title" style="color: #A77E61">
 									xxxxxxxxxxxxxx专区
@@ -174,41 +174,29 @@
 		<!-- 商品列表 -->
 		<div class="goods-list">
 			<div class="goods-list__layout-wrapper">
-				<van-tabs sticky offset-top="50" z-index="20" swipeable class="goods-list__layout-van-sticky__van-tabs">
-					<van-tab title="标签 1">
+				<van-tabs @change="goodsListTypeChange" sticky offset-top="50" z-index="20" swipeable class="goods-list__layout-van-sticky__van-tabs">
+					<van-tab title="护栏产品">
 						<goodsList :goodsListData="goodsListData"></goodsList>
 					</van-tab>
-					<van-tab title="标签 2">
-						<div>11111111</div>
-						<div>22222222</div>
-						<div>33333</div>
-						<div>44444</div>
-						<div>55555</div>
-						<div>666</div>
-						<div>777</div>
-						<div>88</div>
-						<div>99</div>
-						<div>10</div>
-						<div>11</div>
-						<div>12</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
-						<div>22222222</div>
+					<van-tab title="网栏产品">
+						<goodsList :goodsListData="goodsListData"></goodsList>
 					</van-tab>
-					<van-tab title="标签 3">内容 3</van-tab>
-					<van-tab title="标签 4">内容 4</van-tab>
-					<van-tab title="标签 5">内容 5</van-tab>
+					<van-tab title="诱导设施">
+						<goodsList :goodsListData="goodsListData"></goodsList>
+					</van-tab>
+					<van-tab title="安全设施">
+						<goodsList :goodsListData="goodsListData"></goodsList>
+					</van-tab>
+					<van-tab title="设备仪器">
+						<goodsList :goodsListData="goodsListData"></goodsList>
+					</van-tab>
+					<van-tab title="其他建材">
+						<goodsList :goodsListData="goodsListData"></goodsList>
+					</van-tab>
 				</van-tabs>
+				<div v-if="goodsListLoadingFlag"  class="good-list-loading-wrapper">
+					<van-loading/>
+				</div>
 
 			</div>
 			<div class="goods-list__list-wrapper"></div>
@@ -246,6 +234,9 @@
 			// console.log(this.$store.getters.store_UserInfo)
 			// http_getPhone()
 			console.log('首页 Show')
+			this.goodsListData = []
+			this.goodsListDataIsMore = true
+			this.http_getGoodsListData()
 		},
 		// 隐藏
 		onHide: function() {
@@ -254,6 +245,16 @@
 		components: {
 			// 商品列表组件
 			goodsList,
+		},
+		// 页面触底
+		onReachBottom() {
+			console.log('页面触底')
+			if (!this.goodsListDataIsMore) {
+				Toast('暂无更多数据~')
+				return
+			}
+			// this.httpParams.page++
+			this.http_getGoodsListData()
 		},
 		data() {
 			return {
@@ -275,108 +276,46 @@
 				],
 				// 筛选更多抽屉是否显示
 				filterBar_more_driveShow: false,
+				
 				// ugc图片
 				img_ugc,
 				img_pjkkList: [{
 						imgSrc: pjkk_1,
-						itemCode: '1'
+						itemCode: '1',
+						itemName: '护栏网栏'
 					},
 					{
 						imgSrc: pjkk_2,
-						itemCode: '2'
+						itemCode: '2',
+						itemName: '诱导设施'
 					},
 					{
 						imgSrc: pjkk_3,
-						itemCode: '3'
+						itemCode: '3',
+						itemName: '安设施设'
 					},
 					{
 						imgSrc: pjkk_4,
-						itemCode: '4'
+						itemCode: '4',
+						itemName: '设备仪器'
 					},
 					{
 						imgSrc: pjkk_5,
-						itemCode: '5'
+						itemCode: '5',
+						itemName: '其他建材'
 					},
 				],
 				porcelain_1,
 				porcelain_2,
-				goodsListData: [{
-						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
-						price: '价格详询',
-						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
-						descTag: '热销',
-						imgSrc: mockGoodsimg,
-						tags: '标签标签标签标签标签标签标签标签',
-						// 促销文案
-						promotion: {
-							_h: '会员专享 先到先得 会员专享 先到先得',
-							_v: '满千包邮满千包邮',
-							_price: '200200',
-						}
-					},
-					{
-						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
-						price: '价格详询',
-						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
-						descTag: '热销',
-						imgSrc: mockGoodsimg,
-						tags: '标签标签标签标签标签标签标签标签',
-						// 促销文案
-						promotion: {
-							_h: '会员专享 先到先得 会员专享 先到先得',
-							_v: '满千包邮满千包邮',
-							_price: '200200',
-						}
-					},
-
-					{
-						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
-						price: '价格详询',
-						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
-						descTag: '热销',
-						imgSrc: mockGoodsimg,
-						tags: '标签标签标签标签标签标签标签标签',
-						// 促销文案
-						promotion: {
-							_h: '会员专享 先到先得 会员专享 先到先得',
-							_v: '满千包邮满千包邮',
-							_price: '200200',
-						}
-					},
-
-					{
-						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
-						price: '价格详询',
-						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
-						descTag: '热销',
-						imgSrc: mockGoodsimg,
-						tags: '标签标签标签标签标签标签标签标签',
-						// 促销文案
-						promotion: {
-							_h: '',
-							_v: '',
-							_price: '',
-						}
-					},
-
-					{
-						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
-						price: '价格详询',
-						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
-						descTag: '热销',
-						imgSrc: mockGoodsimg,
-						tags: '标签标签标签标签标签标签标签标签',
-						// 促销文案
-						promotion: {
-							_h: '',
-							_v: '',
-							_price: '',
-						}
-					},
-
-
-				]
-
+				// 商品列表tab类型的索引
+				// 0护栏、1网栏、2诱导设施、3安全设施、4设备仪器、5建材
+				goodsListTypeIndex: 0,
+				// 商品列表tab数据
+				goodsListData: [],
+				// 商品列表tab，是否有更多数据
+				goodsListDataIsMore: true,
+				// 商品列表tab，lading 是否展示
+				goodsListLoadingFlag: false,
 			}
 		},
 		methods: {
@@ -389,9 +328,14 @@
 			},
 			// 搜索确定
 			_onSearch(e) {
-				console.log(e.detail)
+				this._openGoodsSpecialByKeyWord(e.detail)
+			},
+			// 关键词跳转商品列表
+			_openGoodsSpecialByKeyWord(keyWord) {
+				console.log('关键词或瓷片区')
+				console.log(keyWord)
 				uni.navigateTo({
-					url: `/pages/goodsSpecial/index?keyWord=${e.detail}`
+					url: `/pages/goodsSpecial/index?keyWord=${keyWord}`
 				})
 			},
 			// 打开关于我们
@@ -406,6 +350,111 @@
 				uni.navigateTo({
 					url: `/pages/${item.path}/index`
 				})
+			},
+			// 获取tab商品列表数据
+			async http_getGoodsListData(){
+				// this.goodsListTypeIndex
+				// 0护栏、1网栏、2诱导设施、3安全设施、4设备仪器、5建材
+				
+				// this.goodsListData
+				
+				console.log('http 获取商品列表数据')
+				this.goodsListLoadingFlag = true
+				// let httpRes = await API_goods.xxxx(xxxx)
+				// console.log(httpRes)
+				let httpRes = [{
+						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
+						price: '价格详询',
+						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
+						descTag: '热销',
+						imgSrc: mockGoodsimg,
+						tags: '标签标签标签标签标签标签标签标签',
+						// 促销文案
+						promotion: {
+							_h: '会员专享 先到先得 会员专享 先到先得',
+							_v: '满千包邮满千包邮',
+							_price: '200200',
+						}
+					},
+					{
+						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
+						price: '价格详询',
+						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
+						descTag: '热销',
+						imgSrc: mockGoodsimg,
+						tags: '标签标签标签标签标签标签标签标签',
+						// 促销文案
+						promotion: {
+							_h: '会员专享 先到先得 会员专享 先到先得',
+							_v: '满千包邮满千包邮',
+							_price: '200200',
+						}
+					},
+				
+					{
+						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
+						price: '价格详询',
+						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
+						descTag: '热销',
+						imgSrc: mockGoodsimg,
+						tags: '标签标签标签标签标签标签标签标签',
+						// 促销文案
+						promotion: {
+							_h: '会员专享 先到先得 会员专享 先到先得',
+							_v: '满千包邮满千包邮',
+							_price: '200200',
+						}
+					},
+				
+					{
+						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
+						price: '价格详询',
+						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
+						descTag: '热销',
+						imgSrc: mockGoodsimg,
+						tags: '标签标签标签标签标签标签标签标签',
+						// 促销文案
+						promotion: {
+							_h: '',
+							_v: '',
+							_price: '',
+						}
+					},
+				
+					{
+						name: '商品名称商品名称商品名称商品名称商品名称商品名称商品称商品名称商品名称商品名称商品名称',
+						price: '价格详询',
+						desc: '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述',
+						descTag: '热销',
+						imgSrc: mockGoodsimg,
+						tags: '标签标签标签标签标签标签标签标签',
+						// 促销文案
+						promotion: {
+							_h: '',
+							_v: '',
+							_price: '',
+						}
+					},
+				]
+				
+				
+				if (!httpRes) {
+					this.goodsListDataIsMore = false
+					this.goodsListLoadingFlag = false
+					return
+				}
+				this.goodsListLoadingFlag = false
+				this.goodsListData.push(...httpRes)
+				console.log(this.goodsListData)
+			},
+			// tab商品列表切换时 
+			goodsListTypeChange(e){
+				console.log(e.detail.index)
+				this.goodsListTypeIndex = e.detail.index
+				this.goodsListData = []
+				this.goodsListDataIsMore = true
+				// tab切换，请求数据
+				this.http_getGoodsListData()
 			},
 		}
 	}
@@ -628,6 +677,15 @@
 
 			}
 
+		}
+		
+		.good-list-loading-wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 28rpx;
+			background-color: #fff;
+			/deep/.van-loading {}
 		}
 
 	}

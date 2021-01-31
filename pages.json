@@ -39,6 +39,8 @@
 			"path": "pages/goods/index",
 			"style": {
 				"navigationBarTitleText": "商品",
+				// 页面触底高度
+				"onReachBottomDistance": 100,
 				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
 				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
 				// 别忘了最前边的斜杠 / wxcomponents
@@ -56,7 +58,9 @@
 					"van-tab": "/wxcomponents/weapp/dist/tab/index",
 					"van-tabs": "/wxcomponents/weapp/dist/tabs/index",
 					// 抽屉页
-					"van-popup": "/wxcomponents/weapp/dist/popup/index"
+					"van-popup": "/wxcomponents/weapp/dist/popup/index",
+					// loading
+					"van-loading": "/wxcomponents/weapp/dist/loading/index"
 				}
 			}
 		},
@@ -71,6 +75,11 @@
 				"usingComponents": {
 					// 按钮
 					// "van-button": "/wxcomponents/weapp/dist/button/index"
+					// tab-layout
+					"van-tab": "/wxcomponents/weapp/dist/tab/index",
+					"van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+					// loading
+					"van-loading": "/wxcomponents/weapp/dist/loading/index"
 				}
 			}
 		},
@@ -215,6 +224,51 @@
 					"van-dialog": "/wxcomponents/weapp/dist/dialog/index"
 				}
 			}
+		},
+		{
+			"path": "pages/directories/index",
+			"style": {
+				"navigationBarTitleText": "企业名录",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					// "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					// "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+					// 单元格
+					// "van-cell": "/wxcomponents/weapp/dist/cell/index",
+					// "van-cell-group": "/wxcomponents/weapp/dist/cell-group/index",
+					// "van-button": "/wxcomponents/weapp/dist/button/index",
+					// 弹窗
+					// "van-dialog": "/wxcomponents/weapp/dist/dialog/index"
+				}
+			}
+		},
+		{
+			"path": "pages/directoriesInfo/index",
+			"style": {
+				"navigationBarTitleText": "企业详情",
+				// 引用Vant组件时 "van-button": "@vant/weapp/button/index"
+				// 将 @vant/weapp  替换成 =》   /wxcomponents/weapp/dist/
+				// 别忘了最前边的斜杠 / wxcomponents
+				"usingComponents": {
+					// 索引滚动组件
+					// "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
+					// "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+					// 单元格
+					// "van-cell": "/wxcomponents/weapp/dist/cell/index",
+					// "van-cell-group": "/wxcomponents/weapp/dist/cell-group/index",
+					// "van-button": "/wxcomponents/weapp/dist/button/index",
+					// 弹窗
+					// "van-dialog": "/wxcomponents/weapp/dist/dialog/index"
+					// tab-layout
+					"van-tab": "/wxcomponents/weapp/dist/tab/index",
+					"van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+					// 浮层
+					"van-toast": "/wxcomponents/weapp/dist/toast/index"
+				}
+			}
 		}
 	],
 	"globalStyle": {
@@ -238,6 +292,11 @@
 			"iconPath": "static/images/icons/tabbar/icon-goods-default.png",
 			"selectedIconPath": "static/images/icons/tabbar/icon-goods-active.png",
 			"text": "商品"
+		}, {
+			"pagePath": "pages/directories/index",
+			"iconPath": "static/images/icons/tabbar/icon-directories-default.png",
+			"selectedIconPath": "static/images/icons/tabbar/icon-directories-active.png",
+			"text": "名录"
 		}, {
 			"pagePath": "pages/me/index",
 			"iconPath": "static/images/icons/tabbar/icon-me-default.png",

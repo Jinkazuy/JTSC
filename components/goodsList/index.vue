@@ -1,6 +1,6 @@
 <template>
 	<div class="goods-list-wrapper">
-		<div class="goods-list__item-wrapper" v-for="(goodsItem, goodsIndex) in goodsListData" :key="goodsIndex" @click="_openGoodsInfo(goodsItem)">
+		<div class="goods-list__item-wrapper" v-for="(goodsItem, goodsIndex) in goodsListData" :key="goodsIndex" @click="_opengoodsInfo(goodsItem)">
 			<div class="goods-list__item-wrapper-img-box borderbox">
 				<img :src="goodsItem.imgSrc">
 				<div class="img-banner-box" v-show="goodsItem.promotion._h&&goodsItem.promotion._v&&goodsItem.promotion._price">
@@ -59,7 +59,7 @@
 		},
 		methods: {
 			// 跳转到商品详情页
-			_openGoodsInfo(item) {
+			_opengoodsInfo(item) {
 				console.log(item)
 				uni.navigateTo({
 					url: `/pages/goodsInfo/index?goodsId=${item.name}`

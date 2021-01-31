@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "企业名录",
+  "usingComponents": {
+    "directories-list": "/components/directoriesList/index"
+  }
+}

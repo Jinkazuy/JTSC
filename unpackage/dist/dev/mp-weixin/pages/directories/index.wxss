@@ -1,0 +1,9 @@
+.directories.data-v-2b7e4136 {
+  padding: 28rpx;
+  background-color: #f6f6f6;
+}
+
+page {
+  background-color: #f6f6f6;
+}
+

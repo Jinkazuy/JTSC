@@ -20,7 +20,7 @@
 	.about-us {
 		image {
 			width: 750rpx;
-			height: 3556rpx;
+			height: 2950rpx;
 		}
 	}
 </style>

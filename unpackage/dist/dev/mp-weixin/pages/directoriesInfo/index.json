@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "企业详情",
+  "usingComponents": {
+    "van-tab": "/wxcomponents/weapp/dist/tab/index",
+    "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+    "van-toast": "/wxcomponents/weapp/dist/toast/index",
+    "font-awesome": "/components/Am-FontAwesome/index"
+  }
+}

@@ -1,0 +1,1 @@
+<view class="directories borderbox clearfix _div data-v-2b7e4136"><directories-list vue-id="5ddb8e41-1" directoriesListData="{{directoriesListData}}" class="data-v-2b7e4136" bind:__l="__l"></directories-list></view>

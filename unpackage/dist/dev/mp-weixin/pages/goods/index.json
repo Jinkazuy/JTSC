@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "商品",
+  "onReachBottomDistance": 100,
   "usingComponents": {
     "van-button": "/wxcomponents/weapp/dist/button/index",
     "van-search": "/wxcomponents/weapp/dist/search/index",
@@ -9,6 +10,7 @@
     "van-tab": "/wxcomponents/weapp/dist/tab/index",
     "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
     "van-popup": "/wxcomponents/weapp/dist/popup/index",
+    "van-loading": "/wxcomponents/weapp/dist/loading/index",
     "goods-list": "/components/goodsList/index"
   }
 }

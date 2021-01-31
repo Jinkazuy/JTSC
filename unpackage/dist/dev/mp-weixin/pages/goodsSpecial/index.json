@@ -1,6 +1,9 @@
 {
   "navigationBarTitleText": "专题列表",
   "usingComponents": {
+    "van-tab": "/wxcomponents/weapp/dist/tab/index",
+    "van-tabs": "/wxcomponents/weapp/dist/tabs/index",
+    "van-loading": "/wxcomponents/weapp/dist/loading/index",
     "goods-list": "/components/goodsList/index"
   }
 }

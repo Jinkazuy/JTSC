@@ -3,7 +3,7 @@
 
 // # 路由前缀
 // export const baseUrl = 'http://39.106.32.178:8020'
-export const baseUrl = 'https://www.jiaotonggongcheng.cn/api/v1'
+export const baseUrl = 'https://api.jiao-xw.com/v1'
 
 // ================== 我的 ==================
 

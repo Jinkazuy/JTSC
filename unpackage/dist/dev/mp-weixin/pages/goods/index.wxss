@@ -183,4 +183,17 @@
   box-sizing: border-box;
   background-color: #f6f6f6;
 }
+.page-goods .good-list-loading-wrapper.data-v-520b1870 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 28rpx;
+  background-color: #fff;
+}
 

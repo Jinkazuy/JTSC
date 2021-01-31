@@ -10,7 +10,9 @@
     "pages/aboutUs/index",
     "pages/registrationAgreement/index",
     "pages/privacyPolicy/index",
-    "pages/settingPage/index"
+    "pages/settingPage/index",
+    "pages/directories/index",
+    "pages/directoriesInfo/index"
   ],
   "subPackages": [],
   "window": {
@@ -36,6 +38,12 @@
         "iconPath": "static/images/icons/tabbar/icon-goods-default.png",
         "selectedIconPath": "static/images/icons/tabbar/icon-goods-active.png",
         "text": "商品"
+      },
+      {
+        "pagePath": "pages/directories/index",
+        "iconPath": "static/images/icons/tabbar/icon-directories-default.png",
+        "selectedIconPath": "static/images/icons/tabbar/icon-directories-active.png",
+        "text": "名录"
       },
       {
         "pagePath": "pages/me/index",
