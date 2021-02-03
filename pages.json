@@ -121,11 +121,13 @@
 					// 按钮
 					"van-button": "/wxcomponents/weapp/dist/button/index",
 					// 上滑菜单
-					"van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index"
+					"van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index",
+					// 弹窗
+					"van-dialog": "/wxcomponents/weapp/dist/dialog/index"
 				}
 			}
 		},
-		// 地址选择页
+		// 城市地址选择页
 		{
 			"path": "pages/localSelect/index",
 			"style": {
@@ -136,7 +138,9 @@
 				"usingComponents": {
 					// 索引滚动组件
 					"van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
-					"van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+					"van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index",
+					// toast
+					"van-toast": "/wxcomponents/weapp/dist/toast/index"
 				}
 			}
 		},

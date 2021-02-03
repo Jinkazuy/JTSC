@@ -11,21 +11,24 @@
 			<!-- 筛选栏 -->
 			<div class="page-home_filter-bar">
 				<div class="page-home_filter-bar__local" @click="_filterBar_local_pageShow">
-					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{filter_local.cityName}}</span>
+					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{httpParams.province.cityName}}</span>
 					<FontAwesome type="fas fa-caret-down" size="24" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
 				</div>
 				<div class="page-home_filter-bar__time" @click="filterBar_time_SheetShow=true">
-					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{filter_time}}</span>
+					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{filter_time.name}}</span>
 					<FontAwesome type="fas fa-caret-down" size="24" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
 				</div>
-				<div class="page-home_filter-bar__type" @click="filterBar_type_SheetShow=true">
+				
+				<!-- 招标类型暂时隐藏 -->
+				<!-- <div class="page-home_filter-bar__type" @click="filterBar_type_SheetShow=true">
 					<span style="margin-right: 8rpx; width: 100%;" class="nowrap">{{filter_type}}</span>
 					<FontAwesome type="fas fa-caret-down" size="24" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
 				</div>
+				更多筛选侧滑抽屉这哪是隐藏
 				<div class="page-home_filter-bar__more" @click="filterBar_more_driveShow=true">
 					<span style="margin-right: 0rpx; width: 100%;">更多</span>
 					<FontAwesome type="fas fa-filter" size="18" color="#CDCDCD" style="margin-right: 4rpx"></FontAwesome>
-				</div>
+				</div> -->
 			</div>
 			<div class="page-home_search-bar__mask"></div>
 			<!-- layout -->
@@ -67,7 +70,7 @@
 		<div class="loading-wrapper" v-if="loadingFlag">
 			<van-loading color="#EB5946" v-show="loadingFlag" />
 		</div>
-		
+
 		<van-toast id="van-toast" />
 
 	</div>
@@ -93,11 +96,13 @@
 
 			// 页面显示的时候，检查是否有 地域 选择的对象，如果有，说明是从地域选择页面跳转回来的
 			if (getApp().globalData.localSelect) {
-				this.filter_local.cityName = getApp().globalData.localSelect.cityName
-				this.filter_local.cityCode = getApp().globalData.localSelect.cityCode
+				this.httpParams.province.cityName = getApp().globalData.localSelect.cityName
+				this.httpParams.province.cityCode = getApp().globalData.localSelect.cityCode
 			}
 
 			// 获取数据列表
+			this.newsListData = []
+			this.httpParams.page = 1
 			this._http_get_newsListData()
 
 			// console.log(this.$store.getters.store_UserInfo)
@@ -119,6 +124,12 @@
 				httpParams: {
 					type: 1, // 类型1招标2中标
 					page: 1, // 页码，默认首页
+					// 地域
+					province: {
+						cityName: '北京',
+						cityCode: 11
+					},
+					date_limit: '30'
 				},
 				// 列表数据
 				newsListData: [],
@@ -129,14 +140,24 @@
 				filterBar_time_SheetShow: false,
 				// 上滑菜单 - 时间 - 选项
 				filterBar_time_SheetActions: [{
-						name: '一小时',
+						name: '今天',
+						date_limit: '1'
 					},
 					{
-						name: '今天',
+						name: '3天内',
+						date_limit: '3'
+					},
+					{
+						name: '5天内',
+						date_limit: '5'
 					},
 					{
 						name: '7天内',
-						subname: '7个自然日内',
+						date_limit: '7'
+					},
+					{
+						name: '30天内',
+						date_limit: '30'
 					},
 				],
 				// 上滑菜单 - 类型 - 是否显示
@@ -157,13 +178,12 @@
 				searchValue: '',
 
 				// 过滤项
-				// 地域
-				filter_local: {
-					cityName: '北京市',
-					cityCode: 11
-				},
+
 				// 时间
-				filter_time: '一小时前',
+				filter_time: {
+					name: '30天内',
+					date_limit: '30'
+				},
 				// 类型
 				filter_type: '劳务招标',
 
@@ -187,14 +207,15 @@
 				this.loadingFlag = true
 				let httpRes = await API_home.http_get_biddingList(this.httpParams)
 				console.log(httpRes)
-				if (!httpRes) {
+				if (httpRes.data.code != 200) {
 					this.newsListDataIsMore = false
 					this.loadingFlag = false
 					return
 				}
+				
 				this.loadingFlag = false
 				this.searchValue = ''
-				this.newsListData.push(...httpRes)
+				this.newsListData.push(...httpRes.data.data)
 				console.log(this.newsListData)
 			},
 
@@ -209,7 +230,13 @@
 			// 上滑菜单 - 时间 - 选择
 			_filterBar_time_onSelect(event) {
 				console.log(event.detail)
-				this.filter_time = event.detail.name
+				this.filter_time.name = event.detail.name
+				this.httpParams.date_limit = event.detail.date_limit
+				// 获取数据列表
+				this.httpParams.page = 1
+				this.newsListData = []
+				this._http_get_newsListData()
+				// 关闭上拉菜单
 				this.filterBar_time_SheetShow = false
 			},
 			// 上滑菜单 - 类型 - 选择
@@ -220,10 +247,10 @@
 			},
 			// 打开地址选择页
 			_filterBar_local_pageShow() {
-				console.log(this.filter_local)
+				console.log(this.province)
 				// 跳转到地址选择页，传入 page 当前页面路由， cityName 当前页筛选的城市名称, 城市代码 cityCode 
 				uni.navigateTo({
-					url: `/pages/localSelect/index?page=home&cityName=${this.filter_local.cityName}&&cityCode=${this.filter_local.cityCode}`,
+					url: `/pages/localSelect/index?page=home&cityName=${this.httpParams.province.cityName}&&cityCode=${this.httpParams.province.cityCode}`,
 				})
 			},
 

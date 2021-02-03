@@ -10,11 +10,18 @@
 					</div>
 					<div class="user-info-wrapper__userinfo-text-wrapper">
 						<div class="user-info-wrapper__userinfo-text-wrapper__username nowrap">{{store_UserInfoData.nickName}}</div>
-						<div class="user-info-wrapper__userinfo-text-wrapper__userphone">{{store_UserInfoData.mobile}}</div>
-						<span class="user-info-wrapper__userinfo-text-wrapper__userintegral-wrapper borderbox">
+						
+						<!-- 手机号先隐藏 -->
+						<!-- <div class="user-info-wrapper__userinfo-text-wrapper__userphone">{{store_UserInfoData.mobile}}</div> -->
+						<!-- 手机号先隐藏 -->
+						
+						<!-- 用户积分先隐藏 -->
+						<!-- <span class="user-info-wrapper__userinfo-text-wrapper__userintegral-wrapper borderbox">
 							<FontAwesome type="fas fa-atom" size="20" color="#FFD80A"></FontAwesome>
 							<span class="user-info-wrapper__userinfo-text-wrapper__userintegral-wrapper-num">999999999</span>
-						</span>
+						</span> -->
+						<!-- 用户积分先隐藏 -->
+						
 					</div>
 					<div class="user-info-wrapper__setting-wrapper" @click="toSetting">
 						<FontAwesome type="fas fa-cog" size="28" color="#fff"></FontAwesome>
@@ -24,83 +31,84 @@
 				<div class="user-info-wrapper__gbmask"></div>
 			</div>
 			<!-- 功能区 -->
-			<div class="user-actions-wrapper borderbox">
-				<div class="user-actions-wrapper__num-box">
-					<div class="user-actions-wrapper__num-box-time">
-						<div class="user-actions-wrapper__num-box-time__num">7</div>
-						<div class="user-actions-wrapper__num-box-time__desc">优惠券</div>
-					</div>
-					<div class="user-actions-wrapper__num-box-line"></div>
-					<div class="user-actions-wrapper__num-box-time">
-						<div class="user-actions-wrapper__num-box-time__num">99</div>
-						<div class="user-actions-wrapper__num-box-time__desc">购物车</div>
-					</div>
-					<div class="user-actions-wrapper__num-box-line"></div>
-					<div class="user-actions-wrapper__num-box-time">
-						<div class="user-actions-wrapper__num-box-time__num">0</div>
-						<div class="user-actions-wrapper__num-box-time__desc">收藏夹</div>
-					</div>
-				</div>
-				<div class="user-actions-wrapper__active-box">
-					<div class="user-actions-wrapper__active-box__item borderbox">
-						<span class="user-actions-wrapper__active-box__item-l-text">普通会员</span>
-						<span class="user-actions-wrapper__active-box__item-r-text">还差10积分升级xxx会员</span>
-					</div>
-					<div class="user-actions-wrapper__active-box__item borderbox">
-						<span class="user-actions-wrapper__active-box__item-l-text">积分钱包</span>
-						<span class="user-actions-wrapper__active-box__item-r-text">9999999</span>
-					</div>
-					<div class="user-actions-wrapper__active-box__item borderbox">
-						<span class="user-actions-wrapper__active-box__item-l-text">VIP会员</span>
-						<span class="user-actions-wrapper__active-box__item-r-text">顺丰物流极速达</span>
-					</div>
-				</div>
-				<div class="user-actions-wrapper__order-box">
-					<div class="user-actions-wrapper__order-box-title">我的订单</div>
-					<div class="user-actions-wrapper__order-box-body">
-						<!-- 待付款 -->
-						<div class="user-actions-wrapper__order-box-body__item">
-							<div class="user-actions-wrapper__order-box-body__item-icon">
-								<FontAwesome type="fas fa-credit-card" size="48" color="#EB5946"></FontAwesome>
-							</div>
-							<div class="user-actions-wrapper__order-box-body__item-text">待付款</div>
-						</div>
-						<!-- 代发货 -->
-						<div class="user-actions-wrapper__order-box-body__item">
-							<div class="user-actions-wrapper__order-box-body__item-icon">
-								<FontAwesome type="fas fa-shipping-fast" size="48" color="#EB5946"></FontAwesome>
-							</div>
-							<div class="user-actions-wrapper__order-box-body__item-text">待发货</div>
-						</div>
-						<!-- 待收货 -->
-						<div class="user-actions-wrapper__order-box-body__item">
-							<div class="user-actions-wrapper__order-box-body__item-icon">
-								<FontAwesome type="fas fa-dolly-flatbed" size="48" color="#EB5946"></FontAwesome>
-							</div>
-							<div class="user-actions-wrapper__order-box-body__item-text">待收货</div>
-						</div>
-						<!-- 待评价 -->
-						<div class="user-actions-wrapper__order-box-body__item">
-							<div class="user-actions-wrapper__order-box-body__item-icon">
-								<FontAwesome type="fas fa-comment-alt" size="48" color="#EB5946"></FontAwesome>
-							</div>
-							<div class="user-actions-wrapper__order-box-body__item-text">待评价</div>
-						</div>
-						<!-- 全部订单 -->
-						<div class="user-actions-wrapper__order-box-body__item">
-							<div class="user-actions-wrapper__order-box-body__item-icon">
-								<FontAwesome type="fas fa-layer-group" size="48" color="#EB5946"></FontAwesome>
-							</div>
-							<div class="user-actions-wrapper__order-box-body__item-text">全部订单</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 收藏去 -->
+			<!-- <div class="user-actions-wrapper borderbox"> -->
+				<!-- <div class="user-actions-wrapper__num-box"> -->
+					<!-- <div class="user-actions-wrapper__num-box-time"> -->
+						<!-- <div class="user-actions-wrapper__num-box-time__num">7</div> -->
+						<!-- <div class="user-actions-wrapper__num-box-time__desc">优惠券</div> -->
+					<!-- </div> -->
+					<!-- <div class="user-actions-wrapper__num-box-line"></div> -->
+					<!-- <div class="user-actions-wrapper__num-box-time"> -->
+						<!-- <div class="user-actions-wrapper__num-box-time__num">99</div> -->
+						<!-- <div class="user-actions-wrapper__num-box-time__desc">购物车</div> -->
+					<!-- </div> -->
+					<!-- <div class="user-actions-wrapper__num-box-line"></div> -->
+					<!-- <div class="user-actions-wrapper__num-box-time"> -->
+						<!-- <div class="user-actions-wrapper__num-box-time__num">0</div> -->
+						<!-- <div class="user-actions-wrapper__num-box-time__desc">收藏夹</div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+				<!-- <div class="user-actions-wrapper__active-box"> -->
+					<!-- <div class="user-actions-wrapper__active-box__item borderbox"> -->
+						<!-- <span class="user-actions-wrapper__active-box__item-l-text">普通会员</span> -->
+						<!-- <span class="user-actions-wrapper__active-box__item-r-text">还差10积分升级xxx会员</span> -->
+					<!-- </div> -->
+					<!-- <div class="user-actions-wrapper__active-box__item borderbox"> -->
+						<!-- <span class="user-actions-wrapper__active-box__item-l-text">积分钱包</span> -->
+						<!-- <span class="user-actions-wrapper__active-box__item-r-text">9999999</span> -->
+					<!-- </div> -->
+					<!-- <div class="user-actions-wrapper__active-box__item borderbox"> -->
+						<!-- <span class="user-actions-wrapper__active-box__item-l-text">VIP会员</span> -->
+						<!-- <span class="user-actions-wrapper__active-box__item-r-text">顺丰物流极速达</span> -->
+					<!-- </div> -->
+				<!-- </div> -->
+				<!-- <div class="user-actions-wrapper__order-box"> -->
+					<!-- <div class="user-actions-wrapper__order-box-title">我的订单</div> -->
+					<!-- <div class="user-actions-wrapper__order-box-body"> -->
+						<!-- /// 待付款 -->
+						<!-- <div class="user-actions-wrapper__order-box-body__item"> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-icon"> -->
+								<!-- <FontAwesome type="fas fa-credit-card" size="48" color="#EB5946"></FontAwesome> -->
+							<!-- </div> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-text">待付款</div> -->
+						<!-- </div> -->
+						<!-- /// 代发货 -->
+						<!-- <div class="user-actions-wrapper__order-box-body__item"> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-icon"> -->
+								<!-- <FontAwesome type="fas fa-shipping-fast" size="48" color="#EB5946"></FontAwesome> -->
+							<!-- </div> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-text">待发货</div> -->
+						<!-- </div> -->
+						<!-- /// 待收货 -->
+						<!-- <div class="user-actions-wrapper__order-box-body__item"> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-icon"> -->
+								<!-- <FontAwesome type="fas fa-dolly-flatbed" size="48" color="#EB5946"></FontAwesome> -->
+							<!-- </div> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-text">待收货</div> -->
+						<!-- </div> -->
+						<!-- /// 待评价 -->
+						<!-- <div class="user-actions-wrapper__order-box-body__item"> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-icon"> -->
+								<!-- <FontAwesome type="fas fa-comment-alt" size="48" color="#EB5946"></FontAwesome> -->
+							<!-- </div> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-text">待评价</div> -->
+						<!-- </div> -->
+						<!-- 全/// 部订单 -->
+						<!-- <div class="user-actions-wrapper__order-box-body__item"> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-icon"> -->
+								<!-- <FontAwesome type="fas fa-layer-group" size="48" color="#EB5946"></FontAwesome> -->
+							<!-- </div> -->
+							<!-- <div class="user-actions-wrapper__order-box-body__item-text">全部订单</div> -->
+						<!-- </div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			
+			<!-- 收藏区 -->
 			<p class="user-collection-wrapper__title">我的收藏</p>
 			<div class="user-collection-wrapper">
 				<div class="user-collection-wrapper__content">
-					<van-tabs offset-top="0" z-index="20" swipeable sticky>
+					<van-tabs offset-top="0" z-index="20" swipeable sticky v-if="userIsLogin">
 						<van-tab title="招标信息">
 							<newsList :newsListData="newsListData" v-show="!loadingFlag"></newsList>
 						</van-tab>
@@ -134,11 +142,12 @@
 			<!-- <div class="no-login-wrapper__login-box" @click="_login">微 信 登 录</div> -->
 			<div class="no-login-wrapper__agreement-box">
 				<span style="color: #999;margin-right: 16rpx;">登录代表您已同意</span>
-				<span style="color: #EB5946;" @click="toRegistrationAgreement">交小哇用户协议、</span>  
-				<span style="color: #EB5946;" @click="toPrivacyPolicy">隐私协议</span>  
+				<span style="color: #EB5946;" @click="toRegistrationAgreement">交小哇用户协议、</span>
+				<span style="color: #EB5946;" @click="toPrivacyPolicy">隐私协议</span>
 			</div>
 		</div>
 		<van-toast id="van-toast" />
+		<van-dialog id="van-dialog" />
 	</div>
 </template>
 
@@ -149,10 +158,16 @@
 
 	import logoUrl from '@/static/images/logo.png'
 
+	import Dialog from '@/wxcomponents/weapp/dist//dialog/dialog';
+
 	// 用户是否已登录
 	import {
-		isLogin
+		isLogin,
+		formatDate
 	} from '@/utils/index.js'
+
+
+	import API_me from '@/api/me/API_me.js'
 
 	// toast组件，拿到的不是组件，是方法；
 	// 如此这般：Toast('我是提示文案，建议不超过十五字~');
@@ -438,7 +453,20 @@
 			getUserInfo() {
 				uni.getUserInfo({
 					success: (res) => {
-						console.log(res)
+
+						// todo: 调试code，完事记得注释掉
+						// console.log('========encryptedData & iv==========')
+						// console.log(res)
+
+						// Dialog.alert({
+						//   title: 'encryptedData',
+						//   message: 'encryptedData: '+res.encryptedData+ '---- iv: '+res.iv,
+						// }).then(() => {
+						//   // on close
+						// });
+
+
+						// console.log(res)
 						// 获取成功，存本地
 						// 将用户基本信息储存到本地，这步其实没什么用，因为用户登录后，会获取用户更详细的信息
 						this.setUserInfoData(res.userInfo)
@@ -452,78 +480,172 @@
 			 * 获取token，将用户加密信息发送给后台
 			 */
 			async loginAndGetToken(encryptedData, iv) {
+
+
 				// 用户登录后，向后台换取token存储到本地
 				uni.login({
-					success: async (loginRes) => {
+					success: (loginRes) => {
+
+						// todo: 调试code，完事记得注释掉
+						console.log('========code==========')
+						console.log(loginRes)
+
+						// Dialog.alert({
+						// 	title: '点确定复制',
+						// 	message: 'code & login的IV & logind的EncryptedData',
+						// }).then(() => {
+
+						// 	// 点击确定复制文字
+						// 	uni.setClipboardData({
+						// 		data: 'code: ' +loginRes.code +'     iv: ' + iv + '     encryptedData: '+encryptedData,
+						// 		success: function() {
+						// 			//重点~做笔记
+						// 			//在success中加入uni.hideToast()可以解决
+						// 			uni.hideToast();
+						// 			//以下就可自定义操作了~
+						// 		},
+						// 		fail: function(err) {
+						// 			uni.showToast({
+						// 				title: '复制失败',
+						// 				duration: 2000,
+						// 				icon: 'none'
+						// 			});
+						// 		}
+						// 	});
+						// });
+
+
+
+
+
 
 						// 拿到用户登录Code，发送给后台，后台返回token值，将token存储到本地中；
 						if (loginRes.code) {
-							console.log('登录，获取token')
-							console.log('todo: 设置token 和 token过期时间')
-							// let httpRes = await http_login_setToken(loginRes.code, encryptedData, iv)
-							// todo: 设置token 和 token过期时间
-							// todo: 设置token 和 token过期时间
-							// todo: 设置token 和 token过期时间
-							// todo: 设置token 和 token过期时间
-							// todo: 设置token 和 token过期时间
-							// todo: 设置token 和 token过期时间
-							this.setToken('ttttttkkkkkkeeeeennnn')
-							
-							// 设置token过期时间，当前时间+7天
-							let expiration = new Date().getTime() + 604800000 // (7*24*60*60*1000)
-							this.setTokenExpiration(expiration)
-							let httpRes = true
+
+							API_me.http_login({
+								code: loginRes.code,
+								encryptedData,
+								iv
+							}).then(res => {
+								console.log('======++++=======')
+								console.log(res)
+
+								if (res.data.code === 200) {
+
+									// console.log('登录，获取token')
+									// console.log('todo: 设置token 和 token过期时间')
+
+									this.setToken(res.data.data.token)
+									console.log(this.store_token)
+									
+									// 设置token过期时间，当前时间+7天
+									let expiration = new Date().getTime() + res.data.data.expiretime
+									this.setTokenExpiration(expiration)
+									this.userIsLogin = true
+									console.log('====== store_UserInfoData ==========')
+									console.log(this.store_UserInfoData)
+									
+									console.log('====== token过期时间 ==========')
+									console.log(formatDate(new Date(this.$store.getters.store_tokenExpiration)))
+									
+									// let httpRes = true
+
+									// 登录成功，执行获取手机号步骤
+									// 登录 & 获取token成功
+
+									// 获取token成功后，获取用户详细数据
+									// let getUD = await http_getUserInfoData()
+									// todo 获取token成功后，将用户敏感信息存储到vuex
+									// this.setUserInfoData({
+									// 	nickName: 'testUserNickName----------'
+									// })
+									// console.log('================')
+									// console.log(this.store_UserInfoData)
+									// let getUD = true
+									
+									
+
+									// // 如果获取用户详细信息成功，就判断是否有手机号
+									// if (getUD) {
+									// 	// 如果获取到的用户详细信息中没有手机号，说明用户之前登陆没有设置手机号，其实逻辑上是不通的，应该是设置手机号了
+									// 	if (this.store_UserInfoData.mobile === '' || this.store_UserInfoData.mobile === null || !this.store_UserInfoData
+									// 		.mobile) {
+									// 		Toast.clear()
+
+									// 		// 显示获取手机号
+									// 		this.onLoginBTN = false
+									// 		this.getPhoneBTN = true
+									// 		// 然后检测本地用户手机号
+									// 		this.ifStoreUserPhone()
+									// 	} else {
+
+									// 		// 进入到里，此时，用户信息、用户手机号、token都获取成功，确认用户登录
+									// 		if (this.store_UserInfoData.nickName !== null) {
+									// 			// this.backOnePage()
+									// 			this.userIsLogin = true
+									// 		}
+									// 	}
+									// }
 
 
-							// 登录失败
-							console.log(httpRes)
-							if (!httpRes) {
-								// 显示登录按钮，隐藏其他按钮
+								} else if (res.data.code === 301) {
+									// 用户没有绑定过手机号
+									
+									
+									this.setToken(res.data.data.token)
+									console.log(this.store_token)
+									
+									// 设置token过期时间，当前时间+7天
+									let expiration = new Date().getTime() + res.data.data.expiretime
+									this.setTokenExpiration(expiration)
+									
+									// 同样设置token，但不显示个人中心
+									// this.userIsLogin = true
+									console.log('====== store_UserInfoData ==========')
+									console.log(this.store_UserInfoData)
+									
+									console.log('====== token过期时间 ==========')
+									console.log(formatDate(new Date(this.$store.getters.store_tokenExpiration)))
+									
+									
+
+									// 显示获取手机号
+									this.onLoginBTN = false
+									this.getPhoneBTN = true
+
+								} else {
+									// 登录失败
+									// 显示登录按钮，隐藏其他按钮
+									this.onLoginBTN = true
+									this.getPhoneBTN = false
+
+									Toast.clear()
+
+									Toast('登录失败')
+								}
+							}).catch(e=>{
+								console.log('requireErr')
+								console.log(e)
+								
 								this.onLoginBTN = true
 								this.getPhoneBTN = false
-
+								
 								Toast.clear()
+								
+								Toast('登录失败，请重新登录')
+							})
 
-								Toast('登录失败')
 
 
-							} else {
 
-								// 登录成功，执行获取手机号步骤
-								// 登录 & 获取token成功
 
-								// 获取token成功后，获取用户详细数据
-								// let getUD = await http_getUserInfoData()
-								// todo 获取token成功后，将用户敏感信息存储到vuex
-								// this.setUserInfoData({
-								// 	nickName: 'testUserNickName----------'
-								// })
-								console.log('================')
-								console.log(this.store_UserInfoData)
-								let getUD = true
 
-								// 如果获取用户详细信息成功，就判断是否有手机号
-								if (getUD) {
-									// 如果获取到的用户详细信息中没有手机号，说明用户之前登陆没有设置手机号，其实逻辑上是不通的，应该是设置手机号了
-									if (this.store_UserInfoData.mobile === '' || this.store_UserInfoData.mobile === null || !this.store_UserInfoData
-										.mobile) {
-										Toast.clear()
+							// console.log(httpRes)
+							// if (!httpRes) {
 
-										// 显示获取手机号
-										this.onLoginBTN = false
-										this.getPhoneBTN = true
-										// 然后检测本地用户手机号
-										this.ifStoreUserPhone()
-									} else {
+							// } else {
 
-										// 进入到里，此时，用户信息、用户手机号、token都获取成功，确认用户登录
-										if (this.store_UserInfoData.nickName !== null) {
-											// this.backOnePage()
-											this.userIsLogin = true
-										}
-									}
-								}
-							}
+							// }
 						} else {
 							Toast('需要您的授权才可以登录')
 						}
@@ -562,19 +684,76 @@
 				console.log('用户点击获取手机号按钮')
 				console.log(e)
 				if (e.detail.encryptedData) {
-					console.log('用户授权手机号，拿到加密数据，发送给后台换取手机号')
-					// let phoneRes = await http_getPhone(e.detail.encryptedData, e.detail.iv)
-					// todo: 这里需要将手机号发送给后台，成功后，再存在本地
-					this.setUserPhone(1880)
-					console.log(this.store_UserInfoData)
 
-					if (1) {
-						// 等待换取手机号结束，检测本地手机号
-						this.ifStoreUserPhone()
-					} else {
-						Toast('服务器正在调整，暂不提供登录，抱歉')
-						console.log('服务器解码手机号失败')
-					}
+					// todo: 调试code，完事记得注释掉
+					// console.log('========code==========')
+
+					// Dialog.alert({
+					// 	title: '点确定复制',
+					// 	message: 'code & login的IV & logind的EncryptedData',
+					// }).then(() => {
+
+					// 	// 点击确定复制文字
+					// 	uni.setClipboardData({
+					// 		data: 'iv: ' + e.detail.iv + '     encryptedData: '+ e.detail.encryptedData,
+					// 		success: function() {
+					// 			//重点~做笔记
+					// 			//在success中加入uni.hideToast()可以解决
+					// 			uni.hideToast();
+					// 			//以下就可自定义操作了~
+					// 		},
+					// 		fail: function(err) {
+					// 			uni.showToast({
+					// 				title: '复制失败',
+					// 				duration: 2000,
+					// 				icon: 'none'
+					// 			});
+					// 		}
+					// 	});
+					// });
+
+					// console.log('用户授权手机号，拿到加密数据，发送给后台换取手机号')
+					// // let phoneRes = await http_getPhone(e.detail.encryptedData, e.detail.iv)
+					// // todo: 这里需要将手机号发送给后台，成功后，再存在本地
+					// this.setUserPhone(1880)
+					// console.log(this.store_UserInfoData)
+
+					// if (1) {
+					// 	// 等待换取手机号结束，检测本地手机号
+					// 	this.ifStoreUserPhone()
+					// } else {
+					// 	Toast('服务器正在调整，暂不提供登录，抱歉')
+					// 	console.log('服务器解码手机号失败')
+					// }
+
+					API_me.http_bindMobile({
+						encryptedData: e.detail.encryptedData,
+						iv: e.detail.iv
+					}).then(res => {
+						console.log('绑定手机号res')
+						console.log(res)
+
+						if (res.data.code === 200) {
+							
+							// 绑定手机号成功
+							console.log('绑定手机号 成功')
+							this.userIsLogin = true
+							
+						} else if(res.data.code === 301) {
+							// token失效 重新登录
+							this.onLoginBTN = true
+							this.getPhoneBTN = false
+							Toast('登录时间过长，请重新登录')
+						} else {
+							// 服务器错误
+							this.onLoginBTN = true
+							this.getPhoneBTN = false
+							Toast('登录失败，服务器错误')
+						}
+					})
+					
+					
+
 
 				} else {
 					Toast('请您授权获取手机号')
@@ -582,19 +761,19 @@
 				}
 			},
 			// 跳转用户协议
-			toRegistrationAgreement(){
+			toRegistrationAgreement() {
 				uni.navigateTo({
 					url: `/pages/registrationAgreement/index`
 				})
 			},
 			// 隐私政策
-			toPrivacyPolicy(){
+			toPrivacyPolicy() {
 				uni.navigateTo({
 					url: `/pages/privacyPolicy/index`
 				})
 			},
 			// 设置页
-			toSetting(){
+			toSetting() {
 				uni.navigateTo({
 					url: `/pages/settingPage/index`
 				})
@@ -611,7 +790,9 @@
 		.user-info-wrapper {
 			position: relative;
 			width: 100%;
-			height: 400rpx;
+			// 这里暂时改成250，等后续功能区开放后，改成400
+			// height: 400rpx;
+			height: 250rpx;
 			background-size: cover;
 			background-position: center;
 			padding: 40rpx 28rpx;

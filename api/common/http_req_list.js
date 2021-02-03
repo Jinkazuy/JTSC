@@ -14,7 +14,7 @@ export const baseUrl = 'https://api.jiao-xw.com/v1'
 export const url_test = 'https://locally.uieee.com/slides'
 
 
-// ================== 招中标信息 ==================
+// ================== 招中标信息（首页） ==================
 
 
 // # 获取招中标列表
@@ -26,4 +26,20 @@ export const url_get_biddingList = baseUrl+'/index/'
 // www.jiaotonggongcheng.cn/api/v1/detail/[id]
 export const url_get_biddingDetail = baseUrl+'/detail/'
 
+// # 城市列表
+// https://api.jiao-xw.com/v1/provinces
+export const url_get_provinces = baseUrl+'/provinces'
+
+
+
+// ================== 我的 ==================
+
+// # 登录
+// https://api.jiao-xw.com/v1/login
+export const url_login = baseUrl+'/login'
+
+
+// # 绑定手机号
+// https://api.jiao-xw.com/v1/bindMobile
+export const url_bindMobile = baseUrl+'/bindMobile'
 

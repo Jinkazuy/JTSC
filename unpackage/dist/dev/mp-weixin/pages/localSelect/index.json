@@ -3,6 +3,7 @@
   "usingComponents": {
     "city-select": "/components/city-select/city-select",
     "van-index-bar": "/wxcomponents/weapp/dist/index-bar/index",
-    "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index"
+    "van-index-anchor": "/wxcomponents/weapp/dist/index-anchor/index",
+    "van-toast": "/wxcomponents/weapp/dist/toast/index"
   }
 }

@@ -7,6 +7,7 @@
     "van-toast": "/wxcomponents/weapp/dist/toast/index",
     "van-button": "/wxcomponents/weapp/dist/button/index",
     "van-action-sheet": "/wxcomponents/weapp/dist/action-sheet/index",
+    "van-dialog": "/wxcomponents/weapp/dist/dialog/index",
     "font-awesome": "/components/Am-FontAwesome/index",
     "news-list": "/components/newsList/index",
     "goods-list": "/components/goodsList/index"

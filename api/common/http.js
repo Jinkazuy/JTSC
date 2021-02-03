@@ -7,7 +7,7 @@ import axios from '@/api/common/js_sdk/gangdiedao-uni-axios/index.js'
 
 // 由于不是vue组件,所以不能拿到this的vue实例,
 // 所以这里操作store就用原始的方法,直接操作文件;
-// import store from '@/store/index.js';
+import store from '@/store/index.js';
 
 
 import {baseUrl} from '@/api/common/http_req_list.js'
@@ -61,7 +61,7 @@ http.interceptors.request.use(config => {
 	// }
 	
 	// 每次请求附加token值,用于后台监测当前用户是否属于登录状态;
-  // config.headers['token'] = store.getters.store_token || ''
+  config.headers['token'] = store.getters.store_token || ''
   return config
 }, error => {
   return Promise.reject(error)

@@ -3,7 +3,7 @@
 
 		<city-select @cityClick="cityClick" :formatName="formatName" :activeCity="activeCity" :hotCity="hotCity" :obtainCitys="obtainCitys"
 		 :isSearch="true" ref="citys"></city-select>
-
+		<van-toast id="van-toast" />
 	</div>
 </template>
 
@@ -12,6 +12,12 @@
 	import citySelect from "@/components/city-select/city-select.vue"
 	// 省列表（这里用 citys 变量，省的改了）
 	import citys from "@/components/city-select/province.js"
+
+	import API_home from '@/api/home/API_home.js'
+	
+	// toast
+	import Toast from '@/wxcomponents/weapp/dist/toast/toast';
+
 	export default {
 		components: {
 			citySelect
@@ -36,10 +42,29 @@
 				obtainCitys: []
 			}
 		},
-		onLoad(routeOption) {
+		async onLoad(routeOption) {
+
+			let provincesListRes = await API_home.http_get_provincesList()
+			if (provincesListRes.data.code !== 200) {
+				console.log('获取城市列表失败')
+				Toast('获取城市列表失败~')
+				return
+			}
+			this.obtainCitys = []
+			if (provincesListRes.data.data.length) {
+				provincesListRes.data.data.forEach((item, index) => {
+					this.obtainCitys.push({
+						'cityCode': index.toString(),
+						'cityName': item
+					})
+				})
+			} else {
+				console.log('获取城市列表失败')
+				Toast('获取城市列表失败~')
+				return
+			}
 			console.log(routeOption)
 			this.previousPage = routeOption.page
-
 			//修改需要构建索引参数的名称
 			this.formatName = 'cityName'
 			//修改当前城市
@@ -61,7 +86,7 @@
 
 			// 修改构建索引数据
 			// 这里从本地文件取，也可以http请求数据，但是要求结构相同
-			this.obtainCitys = citys
+			// this.obtainCitys = citys
 		},
 		methods: {
 			cityClick(item) {
@@ -88,11 +113,6 @@
 						break;
 				}
 
-
-
-
-
-
 			}
 		}
 	}
@@ -101,8 +121,10 @@
 <style lang="stylus">
 	.local-select {
 		.city-select-main {
+
 			// padding-top: 120rpx;
 			.city-serach {
+
 				// position: fixed;
 				// top: 0;
 				// background-color: #fff;
